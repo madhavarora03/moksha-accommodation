@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Silkscreen } from 'next/font/google';
 import localFont from 'next/font/local';
+import Provider from '@/components/Providers';
 import './globals.css';
 
 const inter = Inter({
@@ -38,7 +39,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${munro.variable} ${silkscreen.variable} w-full flex flex-col items-center min-h-screen bg-black text-white`}
       >
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
