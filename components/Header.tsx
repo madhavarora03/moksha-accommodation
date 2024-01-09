@@ -118,7 +118,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   className='block px-4 py-2 text-sm text-gray-500 hover:text-black hover:bg-red-600 cursor-pointer rounded-md'
-                  href={`/signout?url=${path}`}
+                  href={`/signout`}
                 >
                   Logout
                 </Link>
@@ -126,7 +126,7 @@ const Navbar = () => {
             ) : (
               <Link
                 className='block px-4 py-2 text-sm text-gray-500 hover:text-[#fcff19] cursor-pointer'
-                href={`/signin?url=${path}`}
+                href={`/signin`}
               >
                 Login
               </Link>
