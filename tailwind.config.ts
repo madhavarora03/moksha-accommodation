@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         black: '#151515',
         white: '#fafafa',
+        footer: '#a0b0b5',
       },
       fontFamily: {
         base: ['var(--base)'],
