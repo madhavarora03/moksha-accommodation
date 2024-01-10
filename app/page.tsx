@@ -1,10 +1,9 @@
-import { getServerAuthSession } from '@/utils/auth';
+import RegScreen from '@/screens/RegistrationScreen';
 
-const Home = async () => {
-  const session = await getServerAuthSession();
+const Home = () => {
   return (
     <div>
-      <h1>Hello {session?.user?.email}</h1>
+      <RegScreen />
     </div>
   );
 };
