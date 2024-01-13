@@ -82,6 +82,9 @@ const config: Config = {
       retro: ['var(--retro)'],
       munro: ['var(--munro)'],
     },
+    backgroundImage: {
+      home: 'radial-gradient(rgba(4, 9, 30, 0.99), rgba(4, 9, 30, 0.9), rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.9), rgba(4, 9, 30, 0.99)), url("../assets/bgImage.svg")',
+    },
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;

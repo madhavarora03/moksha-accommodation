@@ -1,5 +1,13 @@
-import { getServerAuthSession } from '@/utils/auth';
+import { getServerAuthSession } from '@/lib/auth';
 import { redirect } from 'next/navigation';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
 type UserData = {
   name: string;
@@ -34,25 +42,63 @@ const ProfilePage = async () => {
   );
   const res = await data.json();
   const userData: UserData[] = res.data;
+  if (userData.length === 0) {
+    return (
+      <div>
+        <h1>You are not registered yet.</h1>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      {userData.map((user: UserData) => (
-        <div key={user.leader_id}>
-          <h1>{user.name}</h1>
-          <h2>{user.team_name} of {user.college_name}</h2>
-          <p>
-            <p>{user.age} years old and {user.gender} Gender</p>
-            <p>Email: {user.member_mail}</p>
-            <p>Phone: {user.phone}</p>
-          </p>
-          <div>
-            <p>Check In Date {user.check_in_date}</p>
-            <p>Check Out Date {user.check_out_date}</p>
-            <p>Confirmation Status: {user.confirmation_status ? "Confirmed" : "Not Confirmed"}</p>
-          </div>
-        </div>
-      ))}
+    <div
+      className='mx-auto rounded mt-3 md:mt-6 bg-black/75'
+      style={{ backdropFilter: 'blur(10px)' }}
+    >
+      <Table>
+        <TableHeader className='font-munro text-lg md:text-xl'>
+          <TableRow>
+            <TableHead className='text-[#fcff18] text-center'>Name</TableHead>
+            <TableHead className='text-[#fcff18] text-center'>
+              College
+            </TableHead>
+            <TableHead className='text-[#fcff18] text-center'>Team</TableHead>
+            <TableHead className='text-[#fcff18] text-center'>Age</TableHead>
+            <TableHead className='text-[#fcff18] text-center'>Gender</TableHead>
+            <TableHead className='text-[#fcff18] text-center'>Email</TableHead>
+            <TableHead className='text-[#fcff18] text-center'>
+              Phone No
+            </TableHead>
+            <TableHead className='text-[#fcff18] text-center'>
+              Check In
+            </TableHead>
+            <TableHead className='text-[#fcff18] text-center'>
+              Check Out
+            </TableHead>
+            <TableHead className='text-[#fcff18] text-center'>
+              Confirmation Status
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {userData.map((user: UserData) => (
+            <TableRow key={user.leader_id}>
+              <TableCell>{user.name}</TableCell>
+              <TableCell>{user.college_name}</TableCell>
+              <TableCell>{user.team_name}</TableCell>
+              <TableCell>{user.age}</TableCell>
+              <TableCell>{user.gender}</TableCell>
+              <TableCell>{user.member_mail}</TableCell>
+              <TableCell>{user.phone}</TableCell>
+              <TableCell>{user.check_in_date}</TableCell>
+              <TableCell>{user.check_out_date}</TableCell>
+              <TableCell>
+                {user.confirmation_status ? 'Confirmed' : 'Not Confirmed'}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };

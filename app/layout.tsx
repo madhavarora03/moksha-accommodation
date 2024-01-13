@@ -5,6 +5,7 @@ import Provider from '@/components/Providers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,13 +40,16 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} ${munro.variable} ${silkscreen.variable} w-full flex flex-col items-center min-h-screen bg-black text-white`}
+        className={`${inter.className} ${munro.variable} ${silkscreen.variable} w-full flex flex-col items-center min-h-screen bg-black text-white bg-home bg-cover bg-no-repeat bg-center`}
       >
-        <Provider>
-          <Header />
-          {children}
-          <Footer />
-        </Provider>
+        <div>
+          <Provider>
+            <Header />
+            {children}
+            <Footer />
+          </Provider>
+        </div>
+        <Toaster />
       </body>
     </html>
   );

@@ -2,8 +2,8 @@
 
 import { signOut } from 'next-auth/react';
 
-export default function SignIn() {
+export default function SignOut() {
   signOut({
-    callbackUrl: '/profile',
+    callbackUrl: '/',
   });
 }

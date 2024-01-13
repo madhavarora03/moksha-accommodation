@@ -1,4 +1,4 @@
-import { getServerAuthSession } from '@/utils/auth';
+import { getServerAuthSession } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 
 export default async function Layout({

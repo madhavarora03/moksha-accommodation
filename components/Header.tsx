@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { redirect, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect, useRef } from 'react';
 import logo from '@/assets/Logo.svg';
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter();
   const path = usePathname();
 
   const menu = useRef<HTMLDivElement>(null);
@@ -67,7 +68,7 @@ const Navbar = () => {
         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
       }}
     >
-      <div onClick={() => redirect('/')}>
+      <div onClick={() => router.push('/')}>
         <Image
           src={logo}
           alt='Moksha 2024 Logo'
@@ -88,7 +89,7 @@ const Navbar = () => {
             ref={img}
           />
           <div
-            className={`absolute right-8 mt-4 w-40 bg-black border border-gray-700 rounded-md shadow-lg pt-2 pb-[2px] px-[2px] z-[1000000] font-retro transition-all ease-in-out duration-300 text-right ${
+            className={`absolute right-8 mt-4 w-40 bg-black border-[3px] border-gray-700 rounded-md shadow-lg pt-2 pb-[2px] px-[2px] z-[1000000] font-retro transition-all ease-in-out duration-300 text-right ${
               toggleMenu
                 ? 'top-16 opacity-100'
                 : 'top-10 opacity-0 pointer-events-none'
@@ -126,7 +127,7 @@ const Navbar = () => {
             ) : (
               <Link
                 className='block px-4 py-2 text-sm text-gray-500 hover:text-[#fcff19] cursor-pointer'
-                href={`/signin`}
+                href={`/signin?url=${path}`}
               >
                 Login
               </Link>

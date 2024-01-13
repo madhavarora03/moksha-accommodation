@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Session } from 'next-auth';
 import { useSearchParams } from 'next/navigation';
 import handleSubmit from '@/app/_actions/handleSubmit';
-import SubmitButton from "./SubmitButton";
+import SubmitButton from './SubmitButton';
 
 const FormComponent = ({ session }: { session: Session }) => {
   const leaderMail = session.user?.email;
@@ -81,7 +81,10 @@ const FormComponent = ({ session }: { session: Session }) => {
   });
 
   return (
-    <>
+    <div
+      className='max-w-4xl mx-auto px-4 rounded-2xl my-3 md:my-6 bg-black/75 py-6 md:py-8'
+      style={{ backdropFilter: 'blur(10px)' }}
+    >
       <form action={formAction} style={{ maxWidth: '600px', margin: 'auto' }}>
         <div style={{ marginBottom: '20px' }}>
           <label style={{ display: 'block', marginBottom: '5px' }}>
@@ -222,7 +225,7 @@ const FormComponent = ({ session }: { session: Session }) => {
         ))}
         <SubmitButton />
       </form>
-    </>
+    </div>
   );
 };
 

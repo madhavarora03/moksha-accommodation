@@ -3,8 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from '@/components/ui/card';
 
-const RegScreen: React.FC = () => {
+const RegScreen = () => {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -43,28 +49,26 @@ const RegScreen: React.FC = () => {
   };
 
   return (
-    <div className='max-w-4xl mx-auto px-4'>
-      <h1 className='text-[#BE922F] text-center py-6 md:py-8 text-4xl font-bold'>
+    <div className='max-w-4xl mx-auto px-4 rounded-2xl my-3 md:my-6 bg-black/75' style={{backdropFilter: 'blur(10px)'}}>
+      <h1 className='text-[#fcff18] text-center py-6 md:py-8 text-4xl font-bold font-retro tracking-tighter'>
         Registration Form
       </h1>
 
-      <section className='bg-gray-100 py-6 md:py-8 px-4 md:px-8 rounded-lg shadow-lg'>
-        <div className='mb-6'>
-          <p className='text-lg md:text-xl font-semibold'>
-            <span className='text-xl md:text-2xl font-semibold text-[#BE922F]'>
+      <Card>
+        <CardHeader>
+          <p className='font-semibold font-retro'>
+            <span className='text-xl md:text-2xl font-semibold text-[#fcff18] font-munro'>
               *Charges:
             </span>{' '}
             ₹1000/- per head per night
           </p>
-          <p className='text-lg md:text-xl font-semibold'>
-            *Limited Availability
-          </p>
-        </div>
+          <p className='font-semibold font-munro'>*Limited Availability</p>
+        </CardHeader>
 
-        <div className='flex flex-col md:flex-row justify-between mb-6'>
+        <CardContent className='md:flex block md:justify-between'>
           {/* Check In */}
           <div className='w-full md:w-2/5 mb-4 md:mb-0'>
-            <h2 className='text-[#BE922F] text-2xl md:text-3xl mb-2'>
+            <h2 className='text-[#fcff18] text-2xl md:text-3xl mb-2 font-retro'>
               Check In
             </h2>
             <div className='flex justify-between'>
@@ -72,10 +76,10 @@ const RegScreen: React.FC = () => {
                 <button
                   key={`checkin-${day}`}
                   onClick={() => handleCheckIn(day)}
-                  className={`btn-sm border text-[#02012b] rounded-md py-2 px-4 focus:outline-none ${
+                  className={`btn-sm border rounded-md py-2 px-4 focus:outline-none font-munro ${
                     checkIn === day
-                      ? 'bg-[#BE922F] text-white'
-                      : 'bg-white hover:bg-gray-200'
+                      ? 'bg-[#ffe719] border-white font-extrabold text-black'
+                      : 'bg-transparent hover:bg-gray-900 border-white'
                   }`}
                 >
                   {day}
@@ -86,7 +90,7 @@ const RegScreen: React.FC = () => {
 
           {/* Check Out */}
           <div className='w-full md:w-2/5'>
-            <h2 className='text-[#BE922F] text-2xl md:text-3xl mb-2'>
+            <h2 className='text-[#fcff18] text-2xl md:text-3xl mb-2 font-retro'>
               Check Out
             </h2>
             <div className='flex justify-between'>
@@ -94,10 +98,10 @@ const RegScreen: React.FC = () => {
                 <button
                   key={`checkout-${day}`}
                   onClick={() => handleCheckOut(day)}
-                  className={`btn-sm border text-[#02012b] rounded-md py-2 px-4 focus:outline-none ${
+                  className={`btn-sm border rounded-md py-2 px-4 focus:outline-none font-munro ${
                     checkOut === day
-                      ? 'bg-[#BE922F] text-white'
-                      : 'bg-white hover:bg-gray-200'
+                      ? 'bg-[#ffe719] border-white font-extrabold text-black'
+                      : 'bg-transparent hover:bg-gray-900 border-white'
                   }`}
                 >
                   {day}
@@ -105,15 +109,15 @@ const RegScreen: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
+        </CardContent>
 
-        <div className='flex items-center mb-6'>
-          <h2 className='text-[#BE922F] text-2xl md:text-3xl mr-4'>
+        <CardFooter>
+          <h2 className='text-[#fcff18] text-2xl md:text-3xl mr-4 font-munro'>
             No. of People
           </h2>
           <div className='flex items-center'>
             <button
-              className='btn-sm border text-[#02012b] rounded-md py-2 px-4 focus:outline-none'
+              className='border text-[#02012b] bg-gray-200 hover:bg-[#ffe719] font-retro rounded-md py-2 px-4 focus:outline-none'
               onClick={() => {
                 if (personCount > 1) setPersonCount(personCount - 1);
                 if (personCount === 1) {
@@ -127,46 +131,49 @@ const RegScreen: React.FC = () => {
             >
               -
             </button>
-            <span className='bg-gray-200 px-4 py-2 text-[#02012b]'>
+            <span className='bg-transparent px-4 py-2 font-retro text-[#fcff18] text-3xl'>
               {personCount}
             </span>
             <button
-              className='btn-sm border text-[#02012b] rounded-md py-2 px-4 focus:outline-none'
+              className='border text-[#02012b] bg-gray-200 hover:bg-[#ffe719] font-retro rounded-md py-2 px-4 focus:outline-none'
               onClick={() => setPersonCount(personCount + 1)}
             >
               +
             </button>
           </div>
-        </div>
+        </CardFooter>
 
         <div className='flex flex-col items-center mb-6'>
-          <span className='text-2xl font-semibold text-[#BE922F]'>
-            Total: ₹{personCount * (checkOut - checkIn) * 1000}
+          <span className='text-2xl font-semibold text-[#fcff18] font-retro tracking-tighter'>
+            Total:{' '}
+            <span className='text-white text-3xl tracking-wider'>
+              ₹{personCount * (checkOut - checkIn) * 1000}
+            </span>
           </span>
           <button
-            className='btn border text-[#02012b] rounded-md py-2 px-6 mt-4 focus:outline-none hover:bg-[#BE922F] hover:text-white'
+            className='border rounded-md py-2 px-6 mt-4 focus:outline-none font-munro tracking-wider text-2xl text-[#fcff18] bg-gray-900 hover:bg-gray-800 hover:text-white'
             onClick={submitHandler}
           >
             Continue
           </button>
         </div>
-      </section>
+      </Card>
 
-      <section className='mt-8'>
-        <h4 className='text-[#BE922F] text-2xl mb-4'>Accommodation Policy:</h4>
-        <div className='text-lg'>
+      <section className='mt-8 py-3'>
+        <h4 className='text-[#fcff18] text-xl md:text-2xl mb-4 font-retro'>Accommodation Policy:</h4>
+        <div className='md:text-lg'>
           <p className='mb-4'>
-            <span className='font-semibold text-[#BE922F]'>
+            <span className='font-semibold text-[#fcff18] font-munro md:text-xl text-lg'>
               Accommodation Charges:
             </span>{' '}
             Accommodation charges are ₹1000 per candidate per day...
           </p>
           <p className='mb-4'>
-            <span className='font-semibold text-[#BE922F]'>Timing:</span> Check
+            <span className='font-semibold text-[#fcff18] font-munro md:text-xl text-lg'>Timing:</span> Check
             in: check in starts at 9 AM...
           </p>
           <p className='mb-4'>
-            <span className='font-semibold text-[#BE922F]'>
+            <span className='font-semibold text-[#fcff18] font-munro md:text-xl text-lg'>
               Cancellation Policy:
             </span>{' '}
             Confirmed Accommodation cannot be canceled...
