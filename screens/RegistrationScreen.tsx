@@ -49,7 +49,7 @@ const RegScreen = () => {
   };
 
   return (
-    <div className='max-w-4xl mx-auto px-4 rounded-2xl my-3 md:my-6 bg-black/75' style={{backdropFilter: 'blur(10px)'}}>
+    <div className='max-w-4xl mx-auto px-4 rounded-2xl mt-3 md:mt-6 bg-black/75' style={{backdropFilter: 'blur(10px)'}}>
       <h1 className='text-[#fcff18] text-center py-6 md:py-8 text-4xl font-bold font-retro tracking-tighter'>
         Registration Form
       </h1>

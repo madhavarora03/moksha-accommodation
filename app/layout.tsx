@@ -39,13 +39,17 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} ${munro.variable} ${silkscreen.variable} w-full flex flex-col items-center min-h-screen bg-black text-white bg-home bg-cover bg-no-repeat bg-center`}
+        className={`${inter.className} ${munro.variable} ${silkscreen.variable} `}
       >
-          <Provider>
-            <Header />
-            {children}
+        <Provider>
+          <div className="w-full min-h-screen bg-black text-white bg-home bg-cover bg-no-repeat bg-center flex justify-between flex-col">
+            <center className='absolute w-full h-full top-0'>
+              <Header />
+            </center>
+            <div className='mt-32 md:mt-40'>{children}</div>
             <Footer />
-          </Provider>
+          </div>
+        </Provider>
       </body>
     </html>
   );
