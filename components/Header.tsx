@@ -56,7 +56,7 @@ const Navbar = () => {
     };
   }, []);
 
-  const navbarClasses = `flex items-center justify-between bg-[#1111115e] py-4 px-12 mt-6 md:mt-12 sticky top-0 z-50 border-[0.1px] border-gray-800 transition-all ease-in duration-300 ${
+  const navbarClasses = `flex items-center justify-between bg-[#ff2c96] py-4 px-12 mt-6 md:mt-12 sticky top-0 z-50 border-[0.1px] border-gray-800 transition-all ease-in duration-300 ${
     isSticky ? 'w-full rounded-none' : 'rounded-full md:w-4/5 w-11/12'
   }`;
 

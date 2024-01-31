@@ -1,176 +1,52 @@
 import Link from 'next/link';
-import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import Image from 'next/image';
 import footerLogo from '@/assets/footerLogo.png';
 
 const Footer = () => {
   return (
-    <div className='min-h-20 grid w-full grid-cols-12 bg-[#a0b0b5] px-10 text-white'>
-      <div className='col-span-12 flex h-full w-full justify-center pt-4 md:hidden'>
-        <Image
-          alt='asa'
-          src={footerLogo}
-          decoding='async'
-          data-nimg='1'
-          className='h-14 w-fit'
-          style={{ color: 'transparent' }}
-        />
-        <div className='hidden h-full items-center justify-between space-x-6 sm:flex sm:px-0 '>
-          <Link
-            target='_blank'
-            rel='noreferrer'
-            href='https://www.facebook.com/mokshansut/'
-            className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-          >
-            <FaFacebook />
-          </Link>
-          <Link
-            target='_blank'
-            rel='noreferrer'
-            href='https://www.instagram.com/mokshansut/'
-            className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-          >
-            <FaInstagram />
-          </Link>
-          <Link
-            target='_blank'
-            rel='noreferrer'
-            href='https://www.youtube.com/channel/UCBr3CDT0Yn-nZCcypyK-Fhw'
-            className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-          >
-            <FaYoutube />
-          </Link>
-        </div>
+    <div className='flex bg-[#f60] shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98] mb-9 md:w-4/5 justify-center items-center font-bold my-3 py-4 flex-wrap px-4 mt-9 mx-16'>
+      <div>
+        <Link
+          href='https://www.instagram.com/mokshansut/'
+          target='_blank'
+          className='text-5xl m-2.5'
+        >
+          <InstagramIcon fontSize='inherit' />
+        </Link>
+        <Link
+          href='https://www.facebook.com/mokshansut/'
+          target='_blank'
+          className='text-5xl m-2.5'
+        >
+          <FacebookIcon fontSize='inherit' />
+        </Link>
       </div>
-      <div className='col-span-12 flex w-full items-start justify-around pb-6 pt-4 sm:pb-4 '>
-        <div className='hidden font-light md:block'>
-          <Image
-            alt='asa'
-            src={footerLogo}
-            decoding='async'
-            data-nimg='1'
-            className='h-20 w-fit object-contain font-koulen'
-            style={{ color: 'transparent' }}
-          />
-        </div>
-        <div className=''>
-          <div className='relative mb-1 '>
-            <div className='absolute top-0 h-[2px] font-medium left-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-            Co-ordinators:
-            <div className='absolute bottom-0 h-[2px] right-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-          </div>
-          <div className='flex max-w-[200px] flex-col justify-between'>
-            <div className='text-xs font-medium'>Daksh Panchal </div>
-            <div className='text-xs font-medium'>Priyanshi </div>
-            <div className='text-xs font-medium'>Janvi Ahluwalia </div>
-          </div>
-        </div>
-        <div className=''>
-          <div className='relative mb-1 '>
-            <div className='absolute top-0 h-[2px] left-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-            Moksha:
-            <div className='absolute bottom-0 h-[2px] right-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-          </div>
-          <div className='text-xs'>
-            <Link
-              target='_blank'
-              rel='noreferrer'
-              href='mailto:Moksha@nsut.ac.in'
-              className='tracking-wide'
-            >
-              moksha@nsut.ac.in
-            </Link>
-          </div>
-          <div className='flex h-full items-center justify-between sm:hidden sm:px-0 '>
-            <Link
-              target='_blank'
-              rel='noreferrer'
-              href='https://www.facebook.com/mokshansut/'
-              className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-            >
-              <FaFacebook />
-            </Link>
-            <Link
-              target='_blank'
-              rel='noreferrer'
-              href='https://www.instagram.com/mokshansut/'
-              className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-            >
-              <FaInstagram />
-            </Link>
-            <Link
-              target='_blank'
-              rel='noreferrer'
-              href='https://www.youtube.com/channel/UCBr3CDT0Yn-nZCcypyK-Fhw'
-              className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-            >
-              <FaYoutube />
-            </Link>
-          </div>
-        </div>
-        <div className='hidden font-light sm:block '>
-          <div className='relative mb-1 '>
-            <div className='absolute top-0 h-[2px] left-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-            Links:
-            <div className='absolute bottom-0 h-[2px] right-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-          </div>
-          <div className='text-xs transition-all duration-100 '>
-            <Link href='/userlogin'>REGISTER</Link>
-          </div>
-          <div className='text-xs transition-all duration-100 '>
-            <Link href='/faq'>FAQs</Link>
-          </div>
-          <div className='text-yellow-400 text-xs transition-all duration-100 '></div>
-        </div>
-        <div className='hidden font-light md:block'>
-          <div className='relative mb-1 font-koulen'>
-            <div className='absolute top-0 h-[2px] left-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-            Follow Us:
-            <div className='absolute bottom-0 h-[2px] right-0 w-[0.01px] bg-white transition-[width] duration-200'></div>
-          </div>
-          <div className='hidden h-full items-center justify-start space-x-5 sm:flex sm:px-0 '>
-            <Link
-              target='_blank'
-              rel='noreferrer'
-              href='https://www.facebook.com/mokshansut/'
-              className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-            >
-              <FaFacebook />
-            </Link>
-            <Link
-              target='_blank'
-              rel='noreferrer'
-              href='https://www.instagram.com/mokshansut/'
-              className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-            >
-              <FaInstagram />
-            </Link>
-            <Link
-              target='_blank'
-              rel='noreferrer'
-              href='https://www.youtube.com/channel/UCBr3CDT0Yn-nZCcypyK-Fhw'
-              className='w-[18px] transition-all duration-100 hover:scale-[1.08] sm:w-[20px] md:w-[25px]'
-            >
-              <FaYoutube />
-            </Link>
-          </div>
-        </div>
+      <Image
+        src='https://mokshainnovision.s3.eu-north-1.amazonaws.com/elementsMain/hang_1.png'
+        alt=''
+        height={100}
+        width={100}
+        className='my-2.5'
+      />
+      <Link href='mailto:moksha@nsut.ac.in' className='bg-black m-5 px-5 py-4'>
+        Contact Us
+      </Link>
+      <Image
+        src='https://mokshainnovision.s3.eu-north-1.amazonaws.com/elementsMain/hang_3.png'
+        alt=''
+        height={100}
+        width={100}
+        className='my-2.5'
+      />
+      <Link href='mailto:moksha@nsut.ac.in' className='bg-black m-5 px-5 py-4'>
+        History
+      </Link>
+      <div className='text-center m-5 max-w-80 text-black leading-tight font-sm'>
+        Netaji Subhas University Of Technology, Azad Hind Fauj Marg, Dwarka
+        Sector-3, Dwarka, Delhi, 110078
       </div>
-      <ul className='col-span-12 -ml-10 flex h-full w-screen items-center justify-around bg-prussian-blue-1000 pb-2 text-sm font-light sm:hidden'>
-        <li className='transition-all duration-100 hover:underline hover:underline-offset-2'>
-          <Link href='/userlogin'>REGISTER</Link>
-        </li>
-        <li className='transition-all duration-100 hover:underline hover:underline-offset-2'>
-          <Link href='/contact'>CONTACT US</Link>
-        </li>
-        <li className='transition-all duration-100 hover:underline hover:underline-offset-2'>
-          <Link href='/events'>EVENTS</Link>
-        </li>
-        <li className='transition-all duration-100 hover:underline hover:underline-offset-2'>
-          <Link href='/faq'>FAQs</Link>
-        </li>
-        <li className='text-yellow-300 transition-all duration-100 hover:underline hover:underline-offset-2'></li>
-      </ul>
     </div>
   );
 };

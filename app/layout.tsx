@@ -26,7 +26,7 @@ const munro = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Moksha Accommodation',
+  title: 'MV 2024 | Accommodation',
   description:
     'A website to provide booking facilities for Moksha Accommodation 2024',
 };
@@ -42,7 +42,7 @@ export default function RootLayout({
         className={`${inter.className} ${munro.variable} ${silkscreen.variable} `}
       >
         <Provider>
-          <div className="w-full min-h-screen bg-black text-white bg-home bg-cover bg-no-repeat bg-center flex justify-between flex-col">
+          <div className='w-full min-h-screen bg-[#dc79ba] text-white flex justify-between items-center flex-col'>
             <center className='absolute w-full h-full top-0'>
               <Header />
             </center>

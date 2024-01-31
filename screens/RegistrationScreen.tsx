@@ -49,17 +49,20 @@ const RegScreen = () => {
   };
 
   return (
-    <div className='max-w-4xl mx-auto px-4 rounded-2xl mt-3 md:mt-6 bg-black/75' style={{backdropFilter: 'blur(10px)'}}>
-      <h1 className='text-[#fcff18] text-center py-6 md:py-8 text-4xl font-bold font-retro tracking-tighter'>
+    <div
+      className='max-w-4xl mx-auto px-4 rounded-2xl mt-3 md:mt-6 bg-[#f60] shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98]'
+      style={{ backdropFilter: 'blur(10px)' }}
+    >
+      <h1 className='text-black text-center py-6 md:py-8 text-4xl font-bold font-retro tracking-tighter'>
         Registration Form
       </h1>
 
-      <Card>
+      <Card className='dark'>
         <CardHeader>
-          <p className='font-semibold font-retro'>
-            <span className='text-xl md:text-2xl font-semibold text-[#fcff18] font-munro'>
+          <p className='font-semibold font-retro flex items-center'>
+            <span className='text-xl md:text-2xl font-semibold text-[#fcff18] font-munro mr-2'>
               *Charges:
-            </span>{' '}
+            </span>
             ₹1000/- per head per night
           </p>
           <p className='font-semibold font-munro'>*Limited Availability</p>
@@ -160,20 +163,24 @@ const RegScreen = () => {
       </Card>
 
       <section className='mt-8 py-3'>
-        <h4 className='text-[#fcff18] text-xl md:text-2xl mb-4 font-retro'>Accommodation Policy:</h4>
+        <h4 className='text-black text-xl md:text-2xl mb-4 font-retro'>
+          Accommodation Policy:
+        </h4>
         <div className='md:text-lg'>
-          <p className='mb-4'>
-            <span className='font-semibold text-[#fcff18] font-munro md:text-xl text-lg'>
+          <p className='mb-4 text-black'>
+            <span className='font-semibold font-munro md:text-xl text-lg'>
               Accommodation Charges:
             </span>{' '}
             Accommodation charges are ₹1000 per candidate per day...
           </p>
-          <p className='mb-4'>
-            <span className='font-semibold text-[#fcff18] font-munro md:text-xl text-lg'>Timing:</span> Check
-            in: check in starts at 9 AM...
+          <p className='mb-4 text-black'>
+            <span className='font-semibold font-munro md:text-xl text-lg'>
+              Timing:
+            </span>{' '}
+            Check in: check in starts at 9 AM...
           </p>
-          <p className='mb-4'>
-            <span className='font-semibold text-[#fcff18] font-munro md:text-xl text-lg'>
+          <p className='mb-4 text-black'>
+            <span className='font-semibold font-munro md:text-xl text-lg'>
               Cancellation Policy:
             </span>{' '}
             Confirmed Accommodation cannot be canceled...

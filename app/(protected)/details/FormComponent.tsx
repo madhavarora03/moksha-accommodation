@@ -6,6 +6,8 @@ import { Session } from 'next-auth';
 import { useSearchParams } from 'next/navigation';
 import handleSubmit from '@/app/_actions/handleSubmit';
 import SubmitButton from './SubmitButton';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 const FormComponent = ({ session }: { session: Session }) => {
   const leaderMail = session.user?.email;
@@ -82,14 +84,14 @@ const FormComponent = ({ session }: { session: Session }) => {
 
   return (
     <div
-      className='max-w-4xl mx-auto px-4 rounded-2xl my-3 md:my-6 bg-black/75 py-6 md:py-8'
+      className='mx-auto px-4 rounded-2xl my-3 md:my-6 bg-[#f60] shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98] w-full py-6 md:py-8 text-black'
       style={{ backdropFilter: 'blur(10px)' }}
     >
       <form action={formAction} style={{ maxWidth: '600px', margin: 'auto' }}>
         <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>
+          <Label style={{ display: 'block', marginBottom: '5px' }}>
             Team Name:
-            <input
+            <Input
               className='text-black'
               type='text'
               name='team-name'
@@ -103,13 +105,13 @@ const FormComponent = ({ session }: { session: Session }) => {
               }}
               required={true}
             />
-          </label>
+          </Label>
         </div>
         {persons.map((person, index) => (
           <div key={index} style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', marginBottom: '5px' }}>
+            <Label style={{ display: 'block', marginBottom: '5px' }}>
               Name:
-              <input
+              <Input
                 className='text-black'
                 type='text'
                 name={`${index}-name`}
@@ -125,10 +127,10 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }}
                 required={true}
               />
-            </label>
-            <label style={{ display: 'block', marginBottom: '5px' }}>
+            </Label>
+            <Label style={{ display: 'block', marginBottom: '5px' }}>
               Phone:
-              <input
+              <Input
                 className='text-black'
                 type='text'
                 value={person.phone}
@@ -144,10 +146,10 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }}
                 required={true}
               />
-            </label>
-            <label style={{ display: 'block', marginBottom: '5px' }}>
+            </Label>
+            <Label style={{ display: 'block', marginBottom: '5px' }}>
               Email:
-              <input
+              <Input
                 className='text-black'
                 type='email'
                 value={person.member_mail}
@@ -163,10 +165,10 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }}
                 required={true}
               />
-            </label>
-            <label style={{ display: 'block', marginBottom: '5px' }}>
+            </Label>
+            <Label style={{ display: 'block', marginBottom: '5px' }}>
               College:
-              <input
+              <Input
                 className='text-black'
                 type='text'
                 value={person.college_name}
@@ -182,10 +184,10 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }}
                 required={true}
               />
-            </label>
-            <label style={{ display: 'block', marginBottom: '5px' }}>
+            </Label>
+            <Label style={{ display: 'block', marginBottom: '5px' }}>
               Gender:
-              <input
+              <Input
                 className='text-black'
                 type='text'
                 value={person.gender}
@@ -201,10 +203,10 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }}
                 required={true}
               />
-            </label>
-            <label style={{ display: 'block', marginBottom: '5px' }}>
+            </Label>
+            <Label style={{ display: 'block', marginBottom: '5px' }}>
               Age:
-              <input
+              <Input
                 className='text-black'
                 type='text'
                 name={`${index}-age`}
@@ -220,7 +222,7 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }}
                 required={true}
               />
-            </label>
+            </Label>
           </div>
         ))}
         <SubmitButton />
