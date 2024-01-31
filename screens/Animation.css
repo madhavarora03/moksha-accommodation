@@ -1,0 +1,13 @@
+.object {
+  animation: move 1s linear infinite;
+}
+
+@keyframes move {
+  0%,
+  100% {
+    bottom: 6;
+  }
+  50% {
+    bottom: 40px;
+  }
+}

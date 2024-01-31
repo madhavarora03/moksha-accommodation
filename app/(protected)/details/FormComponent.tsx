@@ -38,11 +38,10 @@ const FormComponent = ({ session }: { session: Session }) => {
   );
 
   if (
-    state.checkIn < 5 ||
-    state.checkOut < 6 ||
+    state.checkIn < 4 ||
+    state.checkOut != 10 ||
     state.personCount < 1 ||
-    state.checkIn > 8 ||
-    state.checkOut > 9 ||
+    state.checkIn > 7 ||
     state.checkIn > state.checkOut
   ) {
     return (

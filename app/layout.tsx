@@ -42,7 +42,7 @@ export default function RootLayout({
         className={`${inter.className} ${munro.variable} ${silkscreen.variable} `}
       >
         <Provider>
-          <div className='w-full min-h-screen bg-[#dc79ba] text-white flex justify-between items-center flex-col'>
+          <div className='w-full min-h-screen bg-[linear-gradient(180deg,rgba(21,10,39,1)_0%,rgba(21,10,39,1)_60%,rgba(220,121,186,1)_70%,rgba(220,121,186,1)_100%)] text-white flex justify-between items-center flex-col'>
             <center className='absolute w-full h-full top-0'>
               <Header />
             </center>
