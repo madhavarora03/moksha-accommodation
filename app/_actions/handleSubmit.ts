@@ -30,6 +30,9 @@ export default async function handleSubmit(
 
   // console.log(arr);
   try {
+
+    // const payment = 
+
     const data = await fetch(
       'https://script.google.com/macros/s/AKfycbyj0WYvmQP6w1GGgSYkBrpPY6srRSUMZtndwltu3BGBOeCPWtiBOdcdSb6wVZ3dl1YJGQ/exec?action=addTeam',
       {
