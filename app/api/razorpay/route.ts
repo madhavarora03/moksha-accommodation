@@ -1,5 +1,5 @@
 import { RAZORPAY_API_KEY, RAZORPAY_API_SECRET } from '@/config';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
 
 const instance = new Razorpay({
@@ -7,14 +7,7 @@ const instance = new Razorpay({
   key_secret: RAZORPAY_API_SECRET,
 });
 
-interface OrderRequest {
-  body: {
-    amount: number;
-    currency: string;
-  };
-}
-
-const createOrder = async (req: OrderRequest, res: NextResponse) => {
+const createOrder = async (req: NextRequest, res: NextResponse) => {
   const options = {
     amount: 20000,
     currency: 'INR',
