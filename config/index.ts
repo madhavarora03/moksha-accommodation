@@ -1,12 +1,16 @@
-import zod from 'zod';
+import { config } from 'dotenv';
+import { object, string } from 'zod';
+config({ path: '.env.local' });
 
-import {config} from 'dotenv';
-
-const schema = zod.object({
-  RAZORPAY_API_KEY: zod.string(),
-  RAZORPAY_API_SECRET: zod.string(),
+const schema = object({
+  RAZORPAY_API_KEY: string({
+    required_error: 'Razorpay API key is required',
+  }).min(1),
+  RAZORPAY_API_SECRET: string({
+    required_error: 'Razorpay API secret is required',
+  }).min(1),
 });
 
 const env = schema.parse(process.env);
 
-export {RAZORPAY_API_KEY, RAZORPAY_API_SECRET } = env;
+export const { RAZORPAY_API_KEY, RAZORPAY_API_SECRET } = env;
