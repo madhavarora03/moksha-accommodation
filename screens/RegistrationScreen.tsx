@@ -47,7 +47,7 @@ const RegScreen = () => {
 
   const submitHandler = () => {
     router.push(
-      `/details?checkIn=${checkIn}&checkOut=${checkOut}&personCount=${personCount}`
+      `/details?checkIn=${checkIn}&checkOut=${checkOut}&personCount=${personCount}`,
     );
   };
 
@@ -72,13 +72,15 @@ const RegScreen = () => {
 
       <Card className='bg-[#ff2c96] shadow-[0_0_0_2px_#000,-8px_8px_0_0_#f9e100] border-none rounded-none'>
         <CardHeader>
-          <p className='font-semibold font-retro flex items-center'>
-            <span className='text-xl md:text-2xl font-semibold text-[#fcff18] font-munro mr-2'>
+          {/* <p className="font-semibold font-retro flex items-center">
+            <span className="text-xl md:text-2xl font-semibold text-[#fcff18] font-munro mr-2">
               *Charges:
             </span>
             ₹1000/- per head per night
+          </p> */}
+          <p className='font-semibold font-munro text-black text-right'>
+            *Limited Availability
           </p>
-          <p className='font-semibold font-munro'>*Limited Availability</p>
         </CardHeader>
 
         <CardContent className='md:flex block md:justify-between'>

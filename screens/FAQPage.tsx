@@ -53,14 +53,14 @@ export default function FAQPage() {
     },
   ];
   return (
-    <div className='w-screen bg-[#dc79ba] flex justify-around overflow-hidden pb-4 pt-2'>
+    <div className='w-screen bg-[#dc79ba] flex justify-around overflow-x-hidden pb-4 pt-2'>
       <Image
         src='https://mokshainnovision.s3.eu-north-1.amazonaws.com/elementsFAQ/1.png'
         alt=''
         width={100}
         height={1080}
       />
-      <div className='w-3/5 flex flex-col gap-4'>
+      <div className='w-3/5 flex flex-col gap-4 min-w-64 mx-3.5 md:mx-0'>
         {FAQs.map((faq) => (
           <FAQ key={faq.question} question={faq.question} answer={faq.answer} />
         ))}

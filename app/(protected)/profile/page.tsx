@@ -27,7 +27,7 @@ const ProfilePage = async () => {
   const session = await getServerAuthSession();
 
   if (!session || !session.user) {
-    redirect('/signin');
+    redirect('/signin?callbackUrl=/profile');
   }
 
   const {
@@ -35,10 +35,10 @@ const ProfilePage = async () => {
   } = session;
 
   const data = await fetch(
-    `https://script.google.com/macros/s/AKfycbyj0WYvmQP6w1GGgSYkBrpPY6srRSUMZtndwltu3BGBOeCPWtiBOdcdSb6wVZ3dl1YJGQ/exec?id=${email}`,
+    `https://script.google.com/macros/s/AKfycbwZlET7985Em51pP5EUetMLxON9SwJZgilLcxxoyK2MkRh3x1fX4sezguHqi38kQ2or/exec?id=${email}`,
     {
       cache: 'no-store',
-    }
+    },
   );
   const res = await data.json();
   const userData: UserData[] = res.data;
