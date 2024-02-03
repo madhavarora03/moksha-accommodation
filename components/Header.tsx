@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect, useRef } from 'react';
+import { signOut, signIn } from 'next-auth/react';
 import person from '../assets/person.svg';
 import triangle from '../assets/triangle.svg';
 
@@ -117,20 +118,20 @@ const Navbar = () => {
                 >
                   Profile
                 </Link>
-                <Link
-                  className='block px-4 py-2 text-sm text-gray-500 hover:text-black hover:bg-red-600 cursor-pointer rounded-md'
-                  href={`/signout`}
+                <button
+                  className='block px-4 py-2 text-sm text-gray-500 hover:text-black hover:bg-red-600 cursor-pointer rounded-md w-full text-right transition-colors duration-150'
+                  onClick={() => signOut()}
                 >
                   Logout
-                </Link>
+                </button>
               </>
             ) : (
-              <Link
-                className='block px-4 py-2 text-sm text-gray-500 hover:text-[#fcff19] cursor-pointer'
-                href={`/signin`}
+              <button
+                className='block px-4 py-2 text-sm text-gray-500 hover:text-[#fcff19] cursor-pointer w-full text-right'
+                onClick={() => signIn('google')}
               >
                 Login
-              </Link>
+              </button>
             )}
           </div>
         </div>

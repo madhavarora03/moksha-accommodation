@@ -3,9 +3,6 @@
 import { useState, type FormEvent } from 'react';
 import { Session } from 'next-auth';
 import { useRouter, useSearchParams } from 'next/navigation';
-// import handleSubmit from '@/app/_actions/handleSubmit';
-// import createOrder from '@/app/_actions/createOrder';
-// import createTeamAndPay from '@/app/_actions/createTeamAndPay';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { useFormStatus } from 'react-dom';
@@ -334,7 +331,7 @@ const FormComponent = ({ session }: { session: Session }) => {
         </div>
         {/* <SubmitButton disabled={disabled} /> */}
       </form>
-      <button type='button' onClick={handleButtonSubmit}>
+      <button type='button' onClick={handleButtonSubmit} className=''>
         Create an Order
       </button>
     </>

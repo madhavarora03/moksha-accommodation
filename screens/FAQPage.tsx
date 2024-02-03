@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import FAQ from '../components/FAQ';
+import { useState } from 'react';
 
 export default function FAQPage() {
   const FAQs = [
@@ -52,6 +55,17 @@ export default function FAQPage() {
         'Moksha - Innovision is a 3 day annual cultural - tech extravaganza, organised in the month of March. The dates will be revealed soon.',
     },
   ];
+
+  const [openFaq, setOpen] = useState(-1);
+  const [opened, setOpened] = useState(true);
+  const handler = (key: number) => {
+    console.log(openFaq, opened);
+    if (openFaq == key) setOpened((old) => !old);
+    else {
+      setOpen((_old) => key);
+      setOpened(true);
+    }
+  };
   return (
     <div className='w-screen bg-[#dc79ba] flex justify-around overflow-x-hidden pb-4 pt-2'>
       <Image
@@ -61,9 +75,22 @@ export default function FAQPage() {
         height={1080}
       />
       <div className='w-3/5 flex flex-col gap-4 min-w-64 mx-3.5 md:mx-0'>
-        {FAQs.map((faq) => (
-          <FAQ key={faq.question} question={faq.question} answer={faq.answer} />
-        ))}
+        {FAQs.map((faq, index) => {
+          return (
+            <div
+              className='w-full bg-[#f60] shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98] rounded-xl min-h-max'
+              onClick={() => handler(index)}
+              key={index}
+            >
+              <FAQ
+                index={index}
+                question={faq.question}
+                answer={faq.answer}
+                opened={openFaq === index && opened}
+              />
+            </div>
+          );
+        })}
       </div>
       <Image
         src='https://mokshainnovision.s3.eu-north-1.amazonaws.com/elementsFAQ/3.png'

@@ -9,7 +9,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-type UserData = {
+export type UserData = {
   name: string;
   team_name: string;
   college_name: string;
@@ -18,6 +18,8 @@ type UserData = {
   member_mail: string;
   leader_id: string;
   phone: string;
+  city: string;
+  state: string;
   check_in_date: number;
   check_out_date: number;
   confirmation_status: boolean;
@@ -27,7 +29,7 @@ const ProfilePage = async () => {
   const session = await getServerAuthSession();
 
   if (!session || !session.user) {
-    redirect('/signin?callbackUrl=/profile');
+    redirect('/signin?redirectTo=/profile');
   }
 
   const {

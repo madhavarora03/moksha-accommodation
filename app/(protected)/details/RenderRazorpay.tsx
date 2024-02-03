@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { createHmac } from 'crypto';
 
-// Function to load script and append in DOM tree.
 const loadScript = (src: any) =>
   new Promise((resolve) => {
     const script = document.createElement('script');
@@ -30,7 +29,6 @@ const RenderRazorpay = ({
   name,
   email,
 }: RenderRazorpayProps) => {
-  // To load razorpay checkout modal script.
   useEffect(() => {
     const displayRazorpay = async (options: any) => {
       const res = await loadScript(
@@ -41,11 +39,9 @@ const RenderRazorpay = ({
         console.log('Razorpay SDK failed to load. Are you online?');
         return;
       }
-      // All information is loaded in options which we will discuss later.
       //@ts-ignore
       const rzp1: Razorpay = new window.Razorpay(options);
 
-      // to open razorpay checkout modal.
       rzp1.open();
     };
 
@@ -57,13 +53,8 @@ const RenderRazorpay = ({
       description: 'Test Transaction',
       image: 'https://mokshainnovision.s3.eu-north-1.amazonaws.com/ww_MV.png',
       order_id: orderId,
-      // callback_url: `${
-      //   process.env.VERCEL_URL ?? 'http://localhost:3000'
-      // }/api/callback?orderId=${orderId}`,
+      payment_method: 'upi', // Add UPI as a payment method
       handler: function (response: any) {
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-        // alert(response.razorpay_signature);
         const hashtext = hash(`${orderId}|${response.razorpay_payment_id}`);
         console.log(hashtext);
         console.log(response.razorpay_signature);
@@ -72,14 +63,6 @@ const RenderRazorpay = ({
           alert('Some Error');
           return;
         }
-        // fetch(`/api/callback?orderId=${orderId}`, {
-        //   method: 'POST',
-        //   body: JSON.stringify({
-        //     paymentId: response.razorpay_payment_id,
-        //     orderId: response.razorpay_order_id,
-        //     signature: response.razorpay_signature,
-        //   }),
-        // });
         //@ts-ignore
         document.querySelector('#razorpay-payment-id').value =
           response.razorpay_payment_id;
@@ -102,9 +85,7 @@ const RenderRazorpay = ({
           'Netaji Subhas University of Technology, Dwarka, New Delhi, India',
       },
       modal: {
-        confirm_close: true, // this is set to true, if we want confirmation when clicked on cross button.
-        // This function is executed when checkout modal is closed
-        // There can be 3 reasons when this modal is closed.
+        confirm_close: true,
       },
       theme: {
         color: '#151515',
