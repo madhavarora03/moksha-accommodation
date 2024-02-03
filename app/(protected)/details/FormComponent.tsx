@@ -11,7 +11,6 @@ import { Input } from '@/components/ui/input';
 import { useFormStatus } from 'react-dom';
 import RenderRazorpay from './RenderRazorpay';
 import Image from 'next/image';
-import { NEXT_PUBLIC_RAZORPAY_API_KEY } from '@/config';
 
 const FormComponent = ({ session }: { session: Session }) => {
   const leaderMail = session.user?.email as string;

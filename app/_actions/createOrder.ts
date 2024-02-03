@@ -1,12 +1,11 @@
 'use server';
 
-import { RAZORPAY_API_KEY, RAZORPAY_API_SECRET } from '@/config';
 import Razorpay from 'razorpay';
 
 export default async function createOrder(amount: number) {
   const instance = new Razorpay({
-    key_id: RAZORPAY_API_KEY,
-    key_secret: RAZORPAY_API_SECRET,
+    key_id: process.env.RAZORPAY_API_KEY ?? 'this is a test key',
+    key_secret: process.env.RAZORPAY_API_SECRET ?? 'this is a test secret',
   });
   const options = {
     amount: amount * 100,

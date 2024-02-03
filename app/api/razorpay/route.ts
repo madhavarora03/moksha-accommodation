@@ -1,11 +1,10 @@
-import { RAZORPAY_API_KEY, RAZORPAY_API_SECRET } from '@/config';
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import Razorpay from 'razorpay';
 
 const instance = new Razorpay({
-  key_id: RAZORPAY_API_KEY,
-  key_secret: RAZORPAY_API_SECRET,
+  key_id: process.env.RAZORPAY_API_KEY ?? '',
+  key_secret: process.env.RAZORPAY_API_SECRET,
 });
 
 export async function POST(request: NextRequest) {
