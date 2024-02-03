@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getServerAuthSession } from '@/lib/auth';
 import FormComponent from './FormComponent';
-import { RAZORPAY_API_KEY } from '@/config';
 
 type UserData = {
   name: string;
@@ -12,7 +11,8 @@ type UserData = {
   member_mail: string;
   leader_id: string;
   phone: string;
-  aadhar_number: string;
+  city: string;
+  state: string;
   check_in_date: number;
   check_out_date: number;
   confirmation_status: boolean;
@@ -24,9 +24,6 @@ export default async function DetailsPage() {
   if (session == null) {
     redirect('/signin');
   }
-  const key = RAZORPAY_API_KEY;
-  if (key == undefined) return 'some error';
-  console.log(key);
 
   return (
     <div className='w-screen'>
@@ -34,7 +31,7 @@ export default async function DetailsPage() {
         className='mx-auto px-4 my-3 md:my-6 bg-[#34cc98] shadow-[0_0_0_2px_#000,8px_8px_0_0_#38b6ff] py-6 md:py-8 text-black w-4/5 md:w-10/12'
         style={{ backdropFilter: 'blur(10px)' }}
       >
-        <FormComponent session={session} key={key} />
+        <FormComponent session={session} />
       </div>
     </div>
   );

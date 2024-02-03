@@ -35,7 +35,7 @@ const ProfilePage = async () => {
   } = session;
 
   const data = await fetch(
-    `https://script.google.com/macros/s/AKfycbwZlET7985Em51pP5EUetMLxON9SwJZgilLcxxoyK2MkRh3x1fX4sezguHqi38kQ2or/exec?id=${email}`,
+    `https://script.google.com/macros/s/AKfycbzYZP0zcq_4_5GtCtMai1JhJsxqY4_wfsJgxYG4qyQiFRLpisNt3RoqwG1yC55AVU40UQ/exec?id=${email}`,
     {
       cache: 'no-store',
     },
@@ -92,9 +92,7 @@ const ProfilePage = async () => {
               <TableCell>{user.phone}</TableCell>
               <TableCell>{user.check_in_date}</TableCell>
               <TableCell>{user.check_out_date}</TableCell>
-              <TableCell>
-                {user.confirmation_status ? 'Confirmed' : 'Not Confirmed'}
-              </TableCell>
+              <TableCell>{user.confirmation_status}</TableCell>
             </TableRow>
           ))}
         </TableBody>

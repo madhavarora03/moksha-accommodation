@@ -31,10 +31,10 @@ export default async function handleSubmit(
     });
   }
 
-  // console.log(arr);
+  console.log(arr);
   try {
     const data = await fetch(
-      'https://script.google.com/macros/s/AKfycbz25cxm4fibYu7MKIh_U3f-BOSUHqxccc4qJvwjPIbwyVuCWnp2pwqfeJGRE_kWP5jZ5g/exec?action=addTeam',
+      'https://script.google.com/macros/s/AKfycby8Swzjoq8cVAteKG2pWjoav9kvQDGzFvy4hwQnFVhe-XOg1lyLIYGgVwTvkd3NgecJUQ/exec?action=addTeam',
       {
         method: 'POST',
         headers: {
@@ -43,10 +43,11 @@ export default async function handleSubmit(
         body: JSON.stringify({ data: arr }),
       },
     );
-    console.log(arr);
+    // console.log(arr);
   } catch (e: any) {
     console.log(e.message);
-  } finally {
-    redirect('/profile');
   }
+  // finally {
+  //   redirect('/profile');
+  // }
 }

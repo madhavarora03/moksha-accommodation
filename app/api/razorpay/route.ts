@@ -12,12 +12,11 @@ export async function POST(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const amount = searchParams.get('amount') as string;
   const options = {
-    amount: Number(amount) * 100,
+    amount: Number(amount),
     currency: 'INR',
     receipt: crypto.randomBytes(10).toString('hex'),
   };
   const order = await instance.orders.create(options);
-  console.log(order);
 
   return NextResponse.json(order);
 }

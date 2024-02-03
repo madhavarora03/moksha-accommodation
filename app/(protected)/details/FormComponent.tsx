@@ -2,10 +2,10 @@
 
 import { useState, type FormEvent } from 'react';
 import { Session } from 'next-auth';
-import { redirect, useSearchParams } from 'next/navigation';
-import handleSubmit from '@/app/_actions/handleSubmit';
-import createOrder from '@/app/_actions/createOrder';
-import createTeamAndPay from '@/app/_actions/createTeamAndPay';
+import { useRouter, useSearchParams } from 'next/navigation';
+// import handleSubmit from '@/app/_actions/handleSubmit';
+// import createOrder from '@/app/_actions/createOrder';
+// import createTeamAndPay from '@/app/_actions/createTeamAndPay';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { useFormStatus } from 'react-dom';
@@ -25,6 +25,11 @@ const FormComponent = ({ session }: { session: Session }) => {
 
   const [aadharLink, setAadharLink] = useState('');
   const [collegeIdLink, setCollegeIdLink] = useState('');
+  const [amount, setAmount] = useState(
+    params.personCount *
+      (params.checkIn === 4 || params.checkIn === 5 ? 4299 : 3499) *
+      100,
+  );
 
   const initialPersonState = {
     leader_id: leaderMail,
@@ -35,9 +40,13 @@ const FormComponent = ({ session }: { session: Session }) => {
     age: '',
     gender: '',
     phone: '',
-    aadhar_number: '',
+    city: '',
+    state: '',
     check_in_date: params.checkIn,
     check_out_date: params.checkOut,
+    razorpay_payment_id: '',
+    razorpay_order_id: '',
+    razorpay_signature: '',
   };
 
   const [persons, setPersons] = useState(
@@ -45,7 +54,7 @@ const FormComponent = ({ session }: { session: Session }) => {
       ...initialPersonState,
     })),
   );
-
+  const router = useRouter();
   if (
     params.checkIn < 4 ||
     params.checkOut != 10 ||
@@ -53,7 +62,7 @@ const FormComponent = ({ session }: { session: Session }) => {
     params.checkIn > 7 ||
     params.checkIn > params.checkOut
   ) {
-    redirect('/');
+    router.push('/hshshahsh');
   }
 
   const handleInputChange = (index: number, field: string, value: string) => {
@@ -78,19 +87,52 @@ const FormComponent = ({ session }: { session: Session }) => {
     });
   };
 
-  const formAction = handleSubmit.bind(null, {
-    length: persons.length,
-    leader_mail: leaderMail as string,
-    check_in_date: params.checkIn,
-    check_out_date: params.checkOut,
-  });
+  const handleRazorpayPayment = async (paymentId: string) => {
+    setPersons((prevPersons) => {
+      const updatedPersons = [...prevPersons];
+      updatedPersons[0] = {
+        ...updatedPersons[0],
+        razorpay_payment_id: paymentId,
+      };
+      return updatedPersons;
+    });
+  };
+
+  const handleRazorpayOrder = async (orderId: string) => {
+    setPersons((prevPersons) => {
+      const updatedPersons = [...prevPersons];
+      updatedPersons[0] = {
+        ...updatedPersons[0],
+        razorpay_order_id: orderId,
+      };
+      return updatedPersons;
+    });
+  };
+
+  const handleRazorpaySignature = async (signature: string) => {
+    setPersons((prevPersons) => {
+      const updatedPersons = [...prevPersons];
+      updatedPersons[0] = {
+        ...updatedPersons[0],
+        razorpay_signature: signature,
+      };
+      return updatedPersons;
+    });
+  };
+
+  // const formAction = handleSubmit.bind(null, {
+  //   length: persons.length,
+  //   leader_mail: leaderMail as string,
+  //   check_in_date: params.checkIn,
+  //   check_out_date: params.checkOut,
+  // });
 
   const [received, setReceived] = useState(false);
   const [orderId, setOrderId] = useState('');
   const [disabled, setDisabled] = useState(false);
 
   const handleButtonSubmit = async () => {
-    const data = await fetch('/api/razorpay?amount=1000', {
+    const data = await fetch(`/api/razorpay?amount=${amount}`, {
       method: 'POST',
       cache: 'no-store',
     });
@@ -99,25 +141,11 @@ const FormComponent = ({ session }: { session: Session }) => {
     setReceived(true);
   };
 
-  const handleFormSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      setDisabled(true);
-      await handleButtonSubmit();
-      // await formAction();
-    } catch (e) {
-      console.log(`Error found: ${e}`);
-    } finally {
-      setDisabled(false);
-    }
-  };
-
   return (
     <>
       {received && (
         <RenderRazorpay
           orderId={orderId}
-          keyId={NEXT_PUBLIC_RAZORPAY_API_KEY}
           amount={
             params.personCount *
             (params.checkIn === 4 || params.checkIn === 5 ? 4299 : 3499) *
@@ -144,7 +172,7 @@ const FormComponent = ({ session }: { session: Session }) => {
           className='inline invert rotate-12 hover:rotate-0 transition-all duration-300 cursor-pointer ml-4 md:h-20 h-12 w-auto'
         />
       </h1>
-      <form onSubmit={handleFormSubmit}>
+      <form action='/api/form' method='POST' id='user-form'>
         <div>
           <Label>
             Team Name:
@@ -236,12 +264,23 @@ const FormComponent = ({ session }: { session: Session }) => {
               />
               <Input
                 className='text-black'
-                placeholder='Aadhar No.'
+                placeholder='City'
                 type='text'
-                name={`${index}-aadhar`}
-                value={person.aadhar_number}
+                name={`${index}-city`}
+                value={person.city}
                 onChange={(e) =>
-                  handleInputChange(index, 'aadhar_number', e.target.value)
+                  handleInputChange(index, 'city', e.target.value)
+                }
+                required={true}
+              />
+              <Input
+                className='text-black'
+                placeholder='State'
+                type='text'
+                name={`${index}-state`}
+                value={person.state}
+                onChange={(e) =>
+                  handleInputChange(index, 'state', e.target.value)
                 }
                 required={true}
               />
@@ -271,8 +310,30 @@ const FormComponent = ({ session }: { session: Session }) => {
               required={true}
             />
           </Label>
+          <Input
+            type='hidden'
+            name='razorpay-payment-id'
+            id='razorpay-payment-id'
+            value={persons[0].razorpay_payment_id}
+            onChange={(e) => handleRazorpayPayment(e.target.value)}
+          />
+          <Input
+            type='hidden'
+            name='razorpay-order-id'
+            id='razorpay-order-id'
+            value={persons[0].razorpay_order_id}
+            onChange={(e) => handleRazorpayOrder(e.target.value)}
+          />
+          <Input
+            type='hidden'
+            name='razorpay-signature'
+            id='razorpay-signature'
+            value={persons[0].razorpay_signature}
+            onChange={(e) => handleRazorpaySignature(e.target.value)}
+          />
+          <Input type='hidden' name='amount' value={amount} />
         </div>
-        <SubmitButton disabled={disabled} />
+        {/* <SubmitButton disabled={disabled} /> */}
       </form>
       <button type='button' onClick={handleButtonSubmit}>
         Create an Order
@@ -281,16 +342,16 @@ const FormComponent = ({ session }: { session: Session }) => {
   );
 };
 
-const SubmitButton = ({ disabled }: { disabled: boolean }) => {
-  return (
-    <button
-      type='submit'
-      className='px-4 py-2 rounded-lg bg-[#38b6ff] hover:bg-blue-600 text-white border-none cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed'
-      disabled={disabled}
-    >
-      Submit
-    </button>
-  );
-};
+// const SubmitButton = ({ disabled }: { disabled: boolean }) => {
+//   return (
+//     <button
+//       type='submit'
+//       className='px-4 py-2 rounded-lg bg-[#38b6ff] hover:bg-blue-600 shadow-[0_0_0_2px_#000] hover:text-white border-none cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed'
+//       disabled={disabled}
+//     >
+//       Submit
+//     </button>
+//   );
+// };
 
 export default FormComponent;
