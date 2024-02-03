@@ -14,11 +14,7 @@ export async function POST(req: Request, res: Response) {
     return NextResponse.error();
   }
 
-  // DB CALL
-
-  // handleSubmit({});
-
-  // return NextResponse.redirect(new URL('/profile', req.url));
+  return NextResponse.redirect(new URL('/profile', req.url));
 }
 
 function hash(string: string) {
