@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createHmac } from 'crypto';
+import { RAZORPAY_API_SECRET } from '@/config';
 
 export async function POST(req: Request, res: Response) {
   let text = await req.text();
@@ -22,7 +23,5 @@ export async function POST(req: Request, res: Response) {
 }
 
 function hash(string: string) {
-  return createHmac('sha256', process.env.RAZORPAY_API_SECRET ?? '')
-    .update(string)
-    .digest('hex');
+  return createHmac('sha256', RAZORPAY_API_SECRET).update(string).digest('hex');
 }

@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getServerAuthSession } from '@/lib/auth';
 import FormComponent from './FormComponent';
-import { env } from '@/config/env.mjs';
+import { RAZORPAY_API_KEY } from '@/config';
 
 type UserData = {
   name: string;
@@ -24,7 +24,7 @@ export default async function DetailsPage() {
   if (session == null) {
     redirect('/signin');
   }
-  const key = process.env.RAZORPAY_API_KEY;
+  const key = RAZORPAY_API_KEY;
   if (key == undefined) return 'some error';
   console.log(key);
 
