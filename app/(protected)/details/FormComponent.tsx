@@ -212,7 +212,7 @@ const FormComponent = ({ session }: { session: Session }) => {
                 ? 'POC Details:'
                 : `Member ${index} Details:`}
             </Label>
-            <div className='flex flex-col md:flex-row gap-2 my-2'>
+            <div className='flex flex-col md:flex-row gap-2 my-2 text-sm font-medium leading-none'>
               <Input
                 className='text-black'
                 placeholder='Name'
@@ -268,7 +268,11 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }
                 required={true}
               /> */}
-              <Input type='hidden' name={`${index}-gender`} value={person.gender} />
+              <Input
+                type='hidden'
+                name={`${index}-gender`}
+                value={person.gender}
+              />
               <Select
                 onValueChange={(value) => {
                   handleInputChange(index, 'gender', value);
