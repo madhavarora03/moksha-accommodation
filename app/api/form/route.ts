@@ -5,14 +5,6 @@ import { redirect } from 'next/navigation';
 export async function POST(req: Request) {
   const session = await getServerAuthSession();
   const data = await req.formData();
-  console.log(data);
-  console.log(
-    req.headers
-      .get('referer')
-      ?.split('?')[1]
-      .split('&')
-      .map((s) => s.split('=')[1]),
-  );
   const query = {
     length: Number(
       req.headers
@@ -38,6 +30,6 @@ export async function POST(req: Request) {
     ),
   };
 
-  handleSubmit(query, data);
+  await handleSubmit(query, data);
   redirect('/profile');
 }

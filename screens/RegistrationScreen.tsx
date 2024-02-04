@@ -12,6 +12,7 @@ import {
 import flappyBird from '@/assets/favicon.svg';
 import Image from 'next/image';
 import './Animation.css';
+import Link from 'next/link';
 
 const RegScreen = () => {
   const { toast } = useToast();
@@ -43,12 +44,6 @@ const RegScreen = () => {
         className: 'font-retro',
       });
     }
-  };
-
-  const submitHandler = () => {
-    router.push(
-      `/details?checkIn=${checkIn}&checkOut=${checkOut}&personCount=${personCount}`,
-    );
   };
 
   return (
@@ -97,7 +92,7 @@ const RegScreen = () => {
                   className={`btn-sm border rounded-md py-2 px-4 focus:outline-none font-munro ${
                     checkIn === day
                       ? 'bg-[#ffe719] border-black font-extrabold text-black'
-                      : 'bg-white border-black'
+                      : 'bg-white border-black hover:bg-[#ffe719]'
                   }`}
                 >
                   {day}
@@ -168,11 +163,13 @@ const RegScreen = () => {
               ₹{personCount * (checkIn === 4 || checkIn === 5 ? 4299 : 3499)}
             </span>
           </span>
-          <button
-            className='border-2 border-black rounded-md py-2 px-6 focus:outline-none font-munro tracking-wider text-2xl text-[#fcff18] bg-[#38b6ff] my-4 font-semibold'
-            onClick={submitHandler}
-          >
-            Continue
+          <button className='border-2 border-black rounded-md py-2 px-6 focus:outline-none font-munro tracking-wider text-2xl text-[#fcff18] bg-[#38b6ff] my-4 font-semibold'>
+            <Link
+              href={`/details?checkIn=${checkIn}&checkOut=${checkOut}&personCount=${personCount}`}
+              prefetch={false}
+            >
+              Continue
+            </Link>
           </button>
         </div>
       </Card>

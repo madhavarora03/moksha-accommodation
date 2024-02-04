@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createHmac } from 'crypto';
+import { dividerClasses } from '@mui/material';
 
 const loadScript = (src: any) =>
   new Promise((resolve) => {
@@ -56,25 +57,39 @@ const RenderRazorpay = ({
       payment_method: 'upi', // Add UPI as a payment method
       handler: function (response: any) {
         const hashtext = hash(`${orderId}|${response.razorpay_payment_id}`);
-        console.log(hashtext);
-        console.log(response.razorpay_signature);
         const succeeded = hashtext == response.razorpay_signature;
         if (!succeeded) {
-          alert('Some Error');
+          alert(
+            'Some Error. Signature could not be verified. Please contact administrator',
+          );
           return;
         }
-        //@ts-ignore
-        document.querySelector('#razorpay-payment-id').value =
-          response.razorpay_payment_id;
-        //@ts-ignore
-        document.querySelector('#razorpay-order-id').value =
-          response.razorpay_order_id;
-        //@ts-ignore
-        document.querySelector('#razorpay-signature').value =
-          response.razorpay_signature;
-        //@ts-ignore
-        document.querySelector('#user-form').submit();
-        return;
+        const paymentIdInput = document.querySelector(
+          '#razorpay-payment-id',
+        ) as HTMLInputElement | null;
+        const orderIdInput = document.querySelector(
+          '#razorpay-order-id',
+        ) as HTMLInputElement | null;
+        const signatureInput = document.querySelector(
+          '#razorpay-signature',
+        ) as HTMLInputElement | null;
+        const form = document.querySelector(
+          '#user-form',
+        ) as HTMLFormElement | null;
+        if (
+          paymentIdInput == null ||
+          orderIdInput == null ||
+          signatureInput == null ||
+          form == null
+        ) {
+          alert('The input fields were not found');
+          return;
+        } else {
+          paymentIdInput.value = response.razorpay_payment_id;
+          orderIdInput.value = response.razorpay_order_id;
+          signatureInput.value = response.razorpay_signature;
+          form.submit();
+        }
       },
       prefill: {
         name: name,

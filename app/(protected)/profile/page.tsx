@@ -8,6 +8,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import Link from 'next/link';
+import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
+import HourglassTopRoundedIcon from '@mui/icons-material/HourglassTopRounded';
 
 export type UserData = {
   name: string;
@@ -46,8 +49,11 @@ const ProfilePage = async () => {
   const userData: UserData[] = res.data;
   if (userData.length === 0) {
     return (
-      <div>
+      <div className='w-full text-center font-retro'>
         <h1>You are not registered yet.</h1>
+        <Link href='/' className='hover:underline transition'>
+          Register Now
+        </Link>
       </div>
     );
   }
@@ -84,7 +90,7 @@ const ProfilePage = async () => {
         </TableHeader>
         <TableBody>
           {userData.map((user: UserData) => (
-            <TableRow key={user.leader_id}>
+            <TableRow key={user.leader_id} className='text-center'>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.college_name}</TableCell>
               <TableCell>{user.team_name}</TableCell>
@@ -94,7 +100,19 @@ const ProfilePage = async () => {
               <TableCell>{user.phone}</TableCell>
               <TableCell>{user.check_in_date}</TableCell>
               <TableCell>{user.check_out_date}</TableCell>
-              <TableCell>{user.confirmation_status}</TableCell>
+              <TableCell>
+                {user.confirmation_status ? (
+                  <span>
+                    Confirmed
+                    <DoneAllRoundedIcon className='text-green-500 ml-2' />
+                  </span>
+                ) : (
+                  <span className=''>
+                    Pending Confirmation
+                    <HourglassTopRoundedIcon className='text-red-600' />
+                  </span>
+                )}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

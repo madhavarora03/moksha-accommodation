@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect, useRef } from 'react';
 import { signOut, signIn } from 'next-auth/react';
@@ -13,7 +12,6 @@ const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const { data: session } = useSession();
-  const router = useRouter();
 
   const menu = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
@@ -55,19 +53,15 @@ const Navbar = () => {
     };
   }, []);
 
-  const navbarClasses = `flex items-center justify-between bg-[#ff2c96] py-2 px-4 md:px-12 mt-6 md:mt-12 sticky top-0 z-50 border-[0.1px] border-gray-800 transition-all ease-in duration-300 ${
-    isSticky ? 'w-full rounded-none' : 'rounded-full md:w-4/5 w-11/12'
+  const navbarClasses = `flex mx-auto items-center justify-between bg-[#ff2c96] py-2 px-4 md:px-12 mt-6 md:mt-12 sticky top-0 z-50 border-[2px] border-black transition-all ease-in duration-300 ${
+    isSticky
+      ? 'w-full rounded-none'
+      : 'rounded-full md:w-4/5 w-11/12 shadow-[0_0_0_8px_#34cc98]'
   }`;
 
   return (
-    <nav
-      className={navbarClasses}
-      style={{
-        backdropFilter: 'blur(7.6px)',
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <div onClick={() => router.push('/')}>
+    <nav className={navbarClasses}>
+      <Link href='/'>
         <Image
           src='https://mokshainnovision.s3.eu-north-1.amazonaws.com/ww_MV.png'
           alt='Moksha 2024 Logo'
@@ -75,7 +69,7 @@ const Navbar = () => {
           height={100}
           className='md:h-14 h-10 cursor-pointer w-auto invert'
         />
-      </div>
+      </Link>
       <div>
         <div className=''>
           <Image
@@ -90,7 +84,7 @@ const Navbar = () => {
             ref={img}
           />
           <div
-            className={`absolute right-8 mt-4 w-40 bg-black border-[3px] border-gray-700 rounded-md shadow-lg pt-2 pb-[2px] px-[2px] z-[1000000] font-retro transition-all ease-in-out duration-300 text-right ${
+            className={`absolute md:right-8 right-0 mt-4 w-40 bg-black border-[3px] border-gray-700 rounded-md shadow-lg pt-2 pb-[2px] px-[2px] z-[1000000] font-retro transition-all ease-in-out duration-300 text-right ${
               toggleMenu
                 ? 'top-16 opacity-100'
                 : 'top-10 opacity-0 pointer-events-none'
@@ -120,7 +114,7 @@ const Navbar = () => {
                 </Link>
                 <button
                   className='block px-4 py-2 text-sm text-gray-500 hover:text-black hover:bg-red-600 cursor-pointer rounded-md w-full text-right transition-colors duration-150'
-                  onClick={() => signOut()}
+                  onClick={() => signOut({ callbackUrl: '/' })}
                 >
                   Logout
                 </button>

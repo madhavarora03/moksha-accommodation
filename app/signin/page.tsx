@@ -1,13 +1,14 @@
-'use client'
+'use client';
 
 import { signIn } from 'next-auth/react';
-import { useSearchParams } from 'next/navigation'; 
+import { useEffect } from 'react';
 
 export default function SignIn() {
-  const searchParams = useSearchParams();
-  const redirectUrl = searchParams.get('redirectTo');
-  signIn('google', {
-    callbackUrl: redirectUrl != null ? redirectUrl : '/profile',
-  });
+  useEffect(() => {
+    const url = window.location.href.split('redirectTo=')[1];
+    signIn('google', {
+      callbackUrl: url ?? '/profile',
+    });
+  }, []);
   return null;
 }

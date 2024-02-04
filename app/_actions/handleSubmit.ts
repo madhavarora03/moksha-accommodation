@@ -36,9 +36,8 @@ export default async function handleSubmit(
     });
   }
 
-  console.log(arr);
   try {
-    const data = await fetch(
+    await fetch(
       'https://script.google.com/macros/s/AKfycbyQN13nT525DUVFflpwMrhXxl1OWPX2jP5XtFnzs-u6N32K_1LXLPJMn8OH7hmvxYm8OA/exec?action=addTeam',
       {
         method: 'POST',
@@ -49,7 +48,7 @@ export default async function handleSubmit(
       },
     );
   } catch (e: any) {
-    console.log(e.message);
+    alert(e.message);
   } finally {
     redirect('/profile');
   }

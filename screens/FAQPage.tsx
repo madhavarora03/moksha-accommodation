@@ -59,7 +59,6 @@ export default function FAQPage() {
   const [openFaq, setOpen] = useState(-1);
   const [opened, setOpened] = useState(true);
   const handler = (key: number) => {
-    console.log(openFaq, opened);
     if (openFaq == key) setOpened((old) => !old);
     else {
       setOpen((_old) => key);

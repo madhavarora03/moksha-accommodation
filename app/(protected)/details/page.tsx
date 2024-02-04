@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getServerAuthSession } from '@/lib/auth';
 import FormComponent from './FormComponent';
+import { signIn } from 'next-auth/react';
 
 export default async function DetailsPage({
   searchParams,
@@ -17,7 +18,7 @@ export default async function DetailsPage({
       newParams.set(key, String(value));
     }
   }
-
+  
   if (session == null) redirect(`/signin?redirectTo=/details?${newParams.toString()}`);
 
   return (

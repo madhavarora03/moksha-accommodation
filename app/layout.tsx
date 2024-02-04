@@ -5,6 +5,7 @@ import Provider from '@/components/Providers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,14 +40,13 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} ${munro.variable} ${silkscreen.variable} `}
+        className={`${inter.className} ${munro.variable} ${silkscreen.variable} w-full min-h-screen bg-[linear-gradient(180deg,rgba(21,10,39,1)_0%,rgba(21,10,39,1)_60%,rgba(220,121,186,1)_70%,rgba(220,121,186,1)_100%)] text-white `}
       >
+        <NextTopLoader color='#ff0000' />
         <Provider>
-          <div className='w-full min-h-screen bg-[linear-gradient(180deg,rgba(21,10,39,1)_0%,rgba(21,10,39,1)_60%,rgba(220,121,186,1)_70%,rgba(220,121,186,1)_100%)] text-white flex justify-between items-center flex-col'>
-            <center className='absolute w-full h-full top-0'>
-              <Header />
-            </center>
-            <div className='mt-32 md:mt-40'>{children}</div>
+          <div>
+            <Header />
+            <div className='md:mt-10 mt-6'>{children}</div>
             <Footer />
           </div>
         </Provider>
