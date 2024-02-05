@@ -147,7 +147,7 @@ const FormComponent = ({ session }: { session: Session }) => {
         toast({
           title: 'All fields are required',
           variant: 'destructive',
-          className: 'font-retro',
+          className: '',
         });
         return;
       }
@@ -181,7 +181,7 @@ const FormComponent = ({ session }: { session: Session }) => {
           email={leaderMail}
         />
       )}
-      <h1 className='md:text-3xl font-retro py-3 md:py-6 text-center w-full text-xl flex justify-between items-center md:px-12'>
+      <h1 className='md:text-3xl  py-3 md:py-6 text-center w-full text-xl flex justify-between items-center md:px-12'>
         <Image
           src='https://mokshainnovision.s3.eu-north-1.amazonaws.com/elementsMain/hang_3.png'
           alt=''
@@ -374,7 +374,6 @@ const FormComponent = ({ session }: { session: Session }) => {
           />
           <Input type='hidden' name='amount' value={amount} />
         </div>
-        {/* <SubmitButton disabled={disabled} /> */}
       </form>
       {disabled ? (
         <Spinner />
@@ -382,7 +381,7 @@ const FormComponent = ({ session }: { session: Session }) => {
         <button
           type='button'
           onClick={handleButtonSubmit}
-          className='mt-2 px-4 py-2 rounded-lg bg-[#38b6ff] hover:bg-blue-600 shadow-[0_0_0_2px_#000] hover:text-white border-none cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed transition font-munro duration-50 text-xl'
+          className='mt-2 px-4 py-2 rounded-lg bg-[#38b6ff] hover:bg-blue-600 shadow-[0_0_0_2px_#000] hover:text-white border-none cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed transition duration-50 text-xl'
         >
           Pay Now and Submit
         </button>

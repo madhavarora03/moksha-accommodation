@@ -26,6 +26,7 @@ export type UserData = {
   check_in_date: number;
   check_out_date: number;
   confirmation_status: boolean;
+  mv_id: string;
 };
 
 const ProfilePage = async () => {
@@ -49,7 +50,7 @@ const ProfilePage = async () => {
   const userData: UserData[] = res.data;
   if (userData.length === 0) {
     return (
-      <div className='w-full text-center font-retro'>
+      <div className='w-full text-center '>
         <h1>You are not registered yet.</h1>
         <Link href='/' className='hover:underline transition'>
           Register Now
@@ -64,7 +65,7 @@ const ProfilePage = async () => {
       style={{ backdropFilter: 'blur(10px)' }}
     >
       <Table>
-        <TableHeader className='font-munro text-lg md:text-xl'>
+        <TableHeader className=' text-lg md:text-xl'>
           <TableRow>
             <TableHead className='text-[#fcff18] text-center'>Name</TableHead>
             <TableHead className='text-[#fcff18] text-center'>
@@ -85,6 +86,9 @@ const ProfilePage = async () => {
             </TableHead>
             <TableHead className='text-[#fcff18] text-center'>
               Confirmation Status
+            </TableHead>
+            <TableHead className='text-[#fcff18] text-center'>
+              Innovision-ID
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -107,12 +111,13 @@ const ProfilePage = async () => {
                     <DoneAllRoundedIcon className='text-green-500 ml-2' />
                   </span>
                 ) : (
-                  <span className=''>
+                  <span>
                     Pending Confirmation
                     <HourglassTopRoundedIcon className='text-red-600' />
                   </span>
                 )}
               </TableCell>
+              <TableCell>{user.mv_id}</TableCell>
             </TableRow>
           ))}
         </TableBody>
