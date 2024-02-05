@@ -31,9 +31,11 @@ const FormComponent = ({ session }: { session: Session }) => {
   const [aadharLink, setAadharLink] = useState('');
   const [collegeIdLink, setCollegeIdLink] = useState('');
   const [amount, setAmount] = useState(
-    params.personCount *
-      (params.checkIn === 4 || params.checkIn === 5 ? 4299 : 3499) *
-      100,
+    (calcAmount(
+      params.checkIn,
+      params.checkOut,
+      params.personCount,
+    ) as number) * 100,
   );
 
   const initialPersonState = {

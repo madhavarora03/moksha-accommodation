@@ -54,7 +54,6 @@ const RenderRazorpay = ({
       description: 'Test Transaction',
       image: 'https://mokshainnovision.s3.eu-north-1.amazonaws.com/ww_MV.png',
       order_id: orderId,
-      payment_method: 'upi', // Add UPI as a payment method
       handler: function (response: any) {
         const hashtext = hash(`${orderId}|${response.razorpay_payment_id}`);
         const succeeded = hashtext == response.razorpay_signature;

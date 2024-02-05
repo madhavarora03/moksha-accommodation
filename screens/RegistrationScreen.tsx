@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import {
   Card,
@@ -17,7 +16,6 @@ import { calcAmount } from '@/lib/amount';
 
 const RegScreen = () => {
   const { toast } = useToast();
-  const router = useRouter();
 
   const [personCount, setPersonCount] = useState(1);
   const [checkIn, setCheckIn] = useState(4);
