@@ -38,7 +38,7 @@ export default async function handleSubmit(
 
   try {
     await fetch(
-      'https://script.google.com/macros/s/AKfycbyQN13nT525DUVFflpwMrhXxl1OWPX2jP5XtFnzs-u6N32K_1LXLPJMn8OH7hmvxYm8OA/exec?action=addTeam',
+      `https://script.google.com/macros/s/${process.env.GOOGLE_APP_SCRIPT_DEPLOYMENT_ID}/exec?action=addTeam`,
       {
         method: 'POST',
         headers: {

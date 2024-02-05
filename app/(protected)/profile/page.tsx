@@ -40,7 +40,7 @@ const ProfilePage = async () => {
   } = session;
 
   const data = await fetch(
-    `https://script.google.com/macros/s/AKfycbzYZP0zcq_4_5GtCtMai1JhJsxqY4_wfsJgxYG4qyQiFRLpisNt3RoqwG1yC55AVU40UQ/exec?id=${email}`,
+    `https://script.google.com/macros/s/${process.env.GOOGLE_APP_SCRIPT_DEPLOYMENT_ID}/exec?id=${email}`,
     {
       cache: 'no-store',
     },

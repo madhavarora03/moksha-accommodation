@@ -15,6 +15,7 @@ import {
   SelectItem,
   SelectContent,
 } from '@/components/ui/select';
+import { calcAmount } from '@/lib/amount';
 
 const FormComponent = ({ session }: { session: Session }) => {
   const leaderMail = session.user?.email as string;
@@ -83,10 +84,13 @@ const FormComponent = ({ session }: { session: Session }) => {
   const handleTeamNameChange = (value: string) => {
     setPersons((prevPersons) => {
       const updatedPersons = [...prevPersons];
-      updatedPersons[0] = {
-        ...updatedPersons[0],
-        team_name: value,
-      };
+      updatedPersons.forEach((person) => {
+        person.team_name = value;
+      });
+      // updatedPersons[0] = {
+      //   ...updatedPersons[0],
+      //   team_name: value,
+      // };
       return updatedPersons;
     });
   };
@@ -131,6 +135,7 @@ const FormComponent = ({ session }: { session: Session }) => {
   const handleButtonSubmit = async () => {
     try {
       setDisabled(true);
+      console.log(persons);
       // Check empty array
       if (
         persons.some((person) =>
@@ -164,9 +169,11 @@ const FormComponent = ({ session }: { session: Session }) => {
         <RenderRazorpay
           orderId={orderId}
           amount={
-            params.personCount *
-            (params.checkIn === 4 || params.checkIn === 5 ? 4299 : 3499) *
-            100
+            (calcAmount(
+              params.checkIn,
+              params.checkOut,
+              params.personCount,
+            ) as number) * 100
           }
           name={session.user?.name as string}
           email={leaderMail}
@@ -257,26 +264,22 @@ const FormComponent = ({ session }: { session: Session }) => {
                 }
                 required={true}
               />
-              {/* <Input
+              <Input
                 className='text-black'
                 placeholder='Gender'
-                type='text'
+                type='hidden'
                 value={person.gender}
                 name={`${index}-gender`}
                 onChange={(e) =>
                   handleInputChange(index, 'gender', e.target.value)
                 }
                 required={true}
-              /> */}
-              <Input
-                type='hidden'
-                name={`${index}-gender`}
-                value={person.gender}
               />
               <Select
                 onValueChange={(value) => {
                   handleInputChange(index, 'gender', value);
                 }}
+                required={true}
               >
                 <SelectTrigger>
                   <SelectValue placeholder='Select your gender' />

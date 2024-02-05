@@ -13,6 +13,7 @@ import flappyBird from '@/assets/favicon.svg';
 import Image from 'next/image';
 import './Animation.css';
 import Link from 'next/link';
+import { calcAmount } from '@/lib/amount';
 
 const RegScreen = () => {
   const { toast } = useToast();
@@ -67,12 +68,6 @@ const RegScreen = () => {
 
       <Card className='bg-[#ff2c96] shadow-[0_0_0_2px_#000,-8px_8px_0_0_#f9e100] border-none rounded-none'>
         <CardHeader>
-          {/* <p className="font-semibold font-retro flex items-center">
-            <span className="text-xl md:text-2xl font-semibold text-[#fcff18] font-munro mr-2">
-              *Charges:
-            </span>
-            ₹1000/- per head per night
-          </p> */}
           <p className='font-semibold font-munro text-black text-right'>
             *Limited Availability
           </p>
@@ -106,15 +101,15 @@ const RegScreen = () => {
             <h2 className='text-[#fcff18] text-2xl md:text-3xl mb-2 font-retro'>
               Check Out
             </h2>
-            <div className='flex justify-between'>
-              {[10].map((day) => (
+            <div className='flex md:gap-14 gap-12'>
+              {[10, 11].map((day) => (
                 <button
                   key={`checkout-${day}`}
                   onClick={() => handleCheckOut(day)}
                   className={`btn-sm border rounded-md py-2 px-4 focus:outline-none font-munro ${
                     checkOut === day
                       ? 'bg-[#ffe719] border-black font-extrabold text-black'
-                      : 'bg-white border-black'
+                      : 'bg-white border-black hover:bg-[#ffe719]'
                   }`}
                 >
                   {day}
@@ -160,7 +155,7 @@ const RegScreen = () => {
           <span className='text-2xl font-semibold text-[#fcff18] font-retro tracking-tighter'>
             Total:{' '}
             <span className='text-white text-3xl tracking-wider'>
-              ₹{personCount * (checkIn === 4 || checkIn === 5 ? 4299 : 3499)}
+              ₹{calcAmount(checkIn, checkOut, personCount)}
             </span>
           </span>
           <button className='border-2 border-black rounded-md py-2 px-6 focus:outline-none font-munro tracking-wider text-2xl text-[#fcff18] bg-[#38b6ff] my-4 font-semibold'>
