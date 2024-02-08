@@ -1,11 +1,10 @@
 import type { Config } from 'tailwindcss';
 
-const config: Config = {
+const config = {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
-    './screens/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
@@ -20,9 +19,6 @@ const config: Config = {
     },
     extend: {
       colors: {
-        black: '#151515',
-        white: '#fafafa',
-        footer: '#a0b0b5',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -56,11 +52,7 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        seashell: '#f7ebeb',
-        jet: '#444140',
-        pumpkin: '#ff6600',
-        raisinblack: '#1e1e24',
-        tuftsblue: '#3c91e6',
+        'hot-pink': '#FF3B78',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -81,14 +73,6 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-    },
-    fontFamily: {
-      base: ['var(--base)'],
-      retro: ['var(--retro)'],
-      munro: ['var(--munro)'],
-    },
-    backgroundImage: {
-      home: 'radial-gradient(rgba(4, 9, 30, 0.99), rgba(4, 9, 30, 0.9), rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.9), rgba(4, 9, 30, 0.99)), url("../assets/bgImage.svg")',
     },
   },
   plugins: [require('tailwindcss-animate')],
