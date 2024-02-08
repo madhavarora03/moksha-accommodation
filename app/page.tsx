@@ -1,7 +1,9 @@
+import FormWrapper from "@/components/FormWrapper";
+
 export default function Home() {
   return (
-    <div>
+    <FormWrapper>
       <h1 className='font-upheavtt'>Home</h1>
-    </div>
+    </FormWrapper>
   );
 }

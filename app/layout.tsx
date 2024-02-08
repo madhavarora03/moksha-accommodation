@@ -28,7 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='dark'>
-      <body className={`${inter.className} ${upheavtt.variable} min-h-dvh`}>
+      <body
+        className={`${inter.className} ${upheavtt.variable} min-h-dvh bg-dark-violet`}
+        style={{
+          backgroundImage: 'url(/bg-elem.svg)',
+          backgroundSize: 'cover',
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center',
+        }}
+      >
         <Provider>
           <Header />
           {children}

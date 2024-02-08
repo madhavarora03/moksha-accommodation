@@ -21,6 +21,8 @@ const config = {
       colors: {
         'fade-pink': '#FC70FF',
         'hot-pink': '#FF3B78',
+        'dark-violet': '#180B2E',
+        violet: '#483780',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

@@ -35,7 +35,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.scrollY;
-      const newOffset = window.innerWidth < 768 ? 22 : 44;
+      const newOffset = window.innerWidth < 768 ? 26 : 90;
       if (currentOffset >= newOffset) {
         setIsSticky(true);
       } else {
@@ -66,7 +66,7 @@ export default function Header() {
           alt='logo'
           height={100}
           width={500}
-          className='md:h-14 h-10 cursor-pointer w-auto py-2 md:py-3.5'
+          className='md:h-14 h-10 cursor-pointer w-auto py-2.5 md:py-4'
         />
       </Link>
       <div>
