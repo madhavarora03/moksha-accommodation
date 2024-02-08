@@ -19,6 +19,8 @@ const config = {
     },
     extend: {
       colors: {
+        'fade-pink': '#FC70FF',
+        'hot-pink': '#FF3B78',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -52,7 +54,6 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        'hot-pink': '#FF3B78',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -73,6 +74,9 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+    },
+    fontFamily: {
+      upheavtt: ['var(--upheavtt)', 'ui-serif', 'serif'],
     },
   },
   plugins: [require('tailwindcss-animate')],

@@ -1,9 +1,20 @@
 import Header from '@/components/Header';
+import Provider from '@/components/Provider';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const upheavtt = localFont({
+  src: '../fonts/upheavtt.ttf',
+  display: 'swap',
+  variable: '--upheavtt',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,10 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-dvh`}>
-        <Header />
-        {children}
+    <html lang='en' className='dark'>
+      <body className={`${inter.className} ${upheavtt.variable} min-h-dvh`}>
+        <Provider>
+          <Header />
+          {children}
+        </Provider>
       </body>
     </html>
   );
