@@ -77,7 +77,7 @@ export default function FAQPage() {
         {FAQs.map((faq, index) => {
           return (
             <div
-              className='w-full bg-[#f60] shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98] rounded-xl min-h-max'
+              className='w-full bg-pumpkin shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98] rounded-xl min-h-max'
               onClick={() => handler(index)}
               key={index}
             >

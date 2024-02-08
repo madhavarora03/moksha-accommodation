@@ -56,6 +56,11 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        seashell: '#f7ebeb',
+        jet: '#444140',
+        pumpkin: '#ff6600',
+        raisinblack: '#1e1e24',
+        tuftsblue: '#3c91e6',
       },
       borderRadius: {
         lg: 'var(--radius)',

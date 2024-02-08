@@ -13,19 +13,6 @@ const inter = Inter({
   variable: '--base',
 });
 
-const silkscreen = Silkscreen({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: '400',
-  variable: '--retro',
-});
-
-const munro = localFont({
-  src: '../fonts/munro.woff2',
-  display: 'swap',
-  variable: '--munro',
-});
-
 export const metadata: Metadata = {
   title: 'MV 2024 | Accommodation',
   description:
@@ -40,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} ${munro.variable} ${silkscreen.variable} w-full min-h-screen bg-[linear-gradient(180deg,rgba(255,102,0,1)_0%,rgba(255,102,0,1)_60%,rgba(220,121,186,1)_70%,rgba(220,121,186,1)_100%)] text-white`}
+        className={`${inter.className} w-full min-h-screen bg-[linear-gradient(180deg,rgba(21,10,36,1)_0%,rgba(21,10,36,1)_60%,rgba(220,121,186,1)_70%,rgba(220,121,186,1)_100%)] text-white`}
       >
         <NextTopLoader color='#ff0000' />
         <Provider>

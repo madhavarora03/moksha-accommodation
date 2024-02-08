@@ -43,11 +43,10 @@ const RegScreen = () => {
   };
 
   return (
-    <div className='max-w-4xl mx-auto px-4 mt-3 md:mt-6 bg-[#fcff18] shadow-[0_0_25px_0_#000] rounded-md my-4'>
+    <div className='max-w-4xl mx-auto px-4 mt-3 md:mt-6 bg-[#9b5ce5] shadow-[0_0_25px_0_#000] rounded-md my-4'>
       <h1 className='text-black text-center py-6 md:py-8 text-4xl font-bold tracking-tighter relative'>
         Book Now!
       </h1>
-
       <Card className='bg-[#ff2c96] shadow-[0_0_0_2px_#000,-8px_8px_0_0_#38b6ff] border-none rounded-none'>
         <CardHeader>
           <p className='font-semibold  text-black text-right'>
