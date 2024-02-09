@@ -5,7 +5,6 @@ import { redirect } from 'next/navigation';
 export async function POST(req: Request) {
   const session = await getServerAuthSession();
   const data = await req.formData();
-  console.log(JSON.stringify(data));
   const query = {
     length: Number(
       req.headers

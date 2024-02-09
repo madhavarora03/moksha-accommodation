@@ -131,7 +131,7 @@ export default function RegisterForm() {
       </div>
       <div className='z-[10]'>
         <svg
-          className='w-4/5 mx-auto md:mx-0 md:w-fit mb-3 md:mb-4 px-2'
+          className='w-4/5 mx-auto md:w-fit mb-3 md:mb-4 px-2'
           width='320'
           height='35'
           viewBox='0 0 320 35'
