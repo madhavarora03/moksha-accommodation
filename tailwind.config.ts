@@ -22,6 +22,7 @@ const config = {
         'fade-pink': '#FC70FF',
         'hot-pink': '#FF3B78',
         'dark-violet': '#180B2E',
+        'vibrant-orange': '#F60',
         violet: '#483780',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

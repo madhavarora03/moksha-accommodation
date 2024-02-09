@@ -1,13 +1,15 @@
 import Header from '@/components/Header';
 import Provider from '@/components/Provider';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 
-const inter = Inter({
+const lato = Lato({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--lato',
+  weight: '400',
 });
 
 const upheavtt = localFont({
@@ -29,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='dark'>
       <body
-        className={`${inter.className} ${upheavtt.variable} min-h-dvh bg-dark-violet`}
+        className={`${lato.className} ${upheavtt.variable} min-h-dvh bg-dark-violet`}
         style={{
           backgroundImage: 'url(/bg-elem.svg)',
           backgroundSize: 'cover',
@@ -39,6 +41,7 @@ export default function RootLayout({
       >
         <Provider>
           <Header />
+          {/* <SideBar /> */}
           {children}
         </Provider>
       </body>
