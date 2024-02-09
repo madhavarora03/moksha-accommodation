@@ -10,5 +10,12 @@ export default function SignIn() {
       callbackUrl: url ?? '/profile',
     });
   }, []);
-  return null;
+  return (
+    <div className='flex justify-center items-center h-[60dvh]'>
+      <p className='md:text-6xl text-4xl text-center font-upheavtt '>
+        You must be signed in!{' '}
+        <span className='text-[#FFED00]'>Redirecting...</span>
+      </p>
+    </div>
+  );
 }
