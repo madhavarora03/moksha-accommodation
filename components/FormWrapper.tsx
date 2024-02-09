@@ -4,18 +4,19 @@ import Plug from './svg/Plug';
 
 export default function FormWrapper({
   children,
+  className,
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <>
-      <div className='bg-hot-pink w-4/6 rounded md:mt-20 mt-16 mx-auto relative border-2 border-violet shadow-[4px_4px_0_0_#FC70FF]'>
+      <div className='bg-hot-pink w-4/6 rounded md:mt-20 mt-16 mx-auto relative border-2 border-violet shadow-[6px_4px_0_0_#FFED00]'>
         <Camera />
         <Plug />
         <Cluster />
-        <main className='flex flex-col items-center justify-between pt-12 md:pt-8 w-full text-center h-full md:gap-7 gap-6'>
-          {children}
-        </main>
+        {/* <Wave /> */}
+        <main className={className}>{children}</main>
       </div>
       <div className='flex flex-row-reverse md:mt-4 mt-2 gap-4 md:scale-100 scale-50 md:w-4/6 mx-auto w-[110%]'>
         <svg

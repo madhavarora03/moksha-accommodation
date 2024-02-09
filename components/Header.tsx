@@ -54,7 +54,7 @@ export default function Header() {
 
   return (
     <nav
-      className={`flex mx-auto items-center justify-between bg-fade-pink py-1 md:py-0 px-5 md:px-7 mt-8 md:mt-24 sticky top-0 z-50 transition-all ease-in duration-200 outline outline-2 ${
+      className={`flex mx-auto items-center justify-between bg-[#AA13AD] py-1 md:py-0 px-5 md:px-7 mt-8 md:mt-24 sticky top-0 z-50 transition-all ease-in duration-200 outline outline-2 ${
         isSticky
           ? 'w-full rounded-none outline-offset-0'
           : 'rounded-full md:w-[62.5%] w-11/12 outline-offset-2'
@@ -82,7 +82,7 @@ export default function Header() {
           ref={img}
         />
         <div
-          className={`absolute md:right-2.5 right-0 mt-2 md:mt-4 w-40 bg-black border-[3px] border-gray-700 rounded-md shadow-lg pt-2 pb-[2px] px-[2px] z-[1000000] font-retro transition-all ease-in-out duration-300 text-right ${
+          className={`absolute md:right-2.5 right-0 mt-2 md:mt-4 w-40 bg-dark-violet border-[3px] border-gray-700 rounded-md shadow-lg pt-2 pb-[2px] px-[2px] z-[1000000] font-retro transition-all ease-in-out duration-300 text-right font-upheavtt ${
             toggleMenu
               ? 'top-16 opacity-100'
               : 'top-10 opacity-0 pointer-events-none'
@@ -99,21 +99,21 @@ export default function Header() {
           {session ? (
             <>
               <Link
-                className='block px-4 py-2 text-sm hover:text-[#fcff19] text-gray-500 cursor-pointer'
+                className='block px-4 py-2 hover:text-[#fcff19] text-gray-500 cursor-pointer tracking-wider'
                 href='/'
                 onClick={() => setToggleMenu(false)}
               >
                 Register
               </Link>
               <Link
-                className='block px-4 py-2 text-sm hover:text-[#fcff19] text-gray-500 cursor-pointer'
+                className='block px-4 py-2 hover:text-[#fcff19] text-gray-500 cursor-pointer tracking-wider'
                 href='/profile'
                 onClick={() => setToggleMenu(false)}
               >
                 Profile
               </Link>
               <button
-                className='block px-4 py-2 text-sm text-gray-500 hover:text-black hover:bg-red-600 cursor-pointer rounded-md w-full text-right transition-colors duration-150'
+                className='block px-4 py-2 text-gray-500 hover:text-black hover:bg-red-600 cursor-pointer rounded-md w-full text-right transition-colors duration-150 tracking-wider'
                 onClick={() => signOut({ callbackUrl: '/' })}
               >
                 Logout
@@ -121,7 +121,7 @@ export default function Header() {
             </>
           ) : (
             <button
-              className='block px-4 py-2 text-sm text-gray-500 hover:text-[#fcff19] cursor-pointer w-full text-right'
+              className='block px-4 py-2 text-gray-500 hover:text-[#fcff19] cursor-pointer w-full text-right tracking-wider'
               onClick={() => signIn('google')}
             >
               Login

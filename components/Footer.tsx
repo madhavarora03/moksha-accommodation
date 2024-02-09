@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <div className='flex bg-vibrant-orange shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98] mb-9 md:w-4/5 justify-center items-center font-bold my-3 py-4 flex-wrap px-4 mt-9 md:mx-auto mx-8'>
+    <div className='flex dark text-white bg-vibrant-orange shadow-[0_0_0_2px_#000,8px_8px_0_0_#34cc98] mb-9 md:w-4/5 justify-center items-center font-bold my-3 py-4 flex-wrap px-4 mt-9 md:mx-auto mx-8'>
       <div>
         <Link
           href='https://www.instagram.com/mokshansut/'
