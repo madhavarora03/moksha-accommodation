@@ -1,4 +1,6 @@
-import Image from 'next/image';
+import Camera from './svg/Camera';
+import Cluster from './svg/Cluster';
+import Plug from './svg/Plug';
 
 export default function FormWrapper({
   children,
@@ -8,28 +10,10 @@ export default function FormWrapper({
   return (
     <>
       <div className='bg-hot-pink w-4/6 rounded md:mt-20 mt-16 mx-auto relative border-2 border-violet shadow-[4px_4px_0_0_#FC70FF]'>
-        <Image
-          src='/camera.svg'
-          alt='camera'
-          width={200}
-          height={200}
-          className='absolute md:-top-16 md:-right-12 -top-12 -right-9 md:w-[125px] md:h-[125px] w-24 h-24'
-        />
-        <Image
-          src='/plug.svg'
-          alt='plug'
-          width={100}
-          height={100}
-          className='absolute md:-top-[3.2rem] md:-left-7 -top-10 -left-5 md:w-[120px] md:h-[120px] w-[5.5rem] h-[5.5rem]'
-        />
-        <Image
-          src='/cluster.svg'
-          alt='cluster'
-          width={300}
-          height={300}
-          className='absolute md:-bottom-[6.5rem] md:-left-[3.25rem] -bottom-16 -left-9 md:w-[250px] md:h-[250px] w-44 h-44'
-        />
-        <main className='flex flex-col items-center justify-between pt-12 md:pt-8 w-full text-center h-full md:gap-10 gap-6'>
+        <Camera />
+        <Plug />
+        <Cluster />
+        <main className='flex flex-col items-center justify-between pt-12 md:pt-8 w-full text-center h-full md:gap-7 gap-6'>
           {children}
         </main>
       </div>
@@ -42,10 +26,10 @@ export default function FormWrapper({
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
         >
-          <rect width={24} height={24} fill='url(#pattern0)' />
+          <rect width={24} height={24} fill='url(#patternx)' />
           <defs>
             <pattern
-              id='pattern0'
+              id='patternx'
               patternContentUnits='objectBoundingBox'
               width={1}
               height={1}
@@ -68,10 +52,10 @@ export default function FormWrapper({
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
         >
-          <rect width={24} height={24} fill='url(#pattern0)' />
+          <rect width={24} height={24} fill='url(#patternx)' />
           <defs>
             <pattern
-              id='pattern0'
+              id='patternx'
               patternContentUnits='objectBoundingBox'
               width={1}
               height={1}
@@ -94,10 +78,10 @@ export default function FormWrapper({
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
         >
-          <rect width={24} height={24} fill='url(#pattern0)' />
+          <rect width={24} height={24} fill='url(#patternx)' />
           <defs>
             <pattern
-              id='pattern0'
+              id='patternx'
               patternContentUnits='objectBoundingBox'
               width={1}
               height={1}

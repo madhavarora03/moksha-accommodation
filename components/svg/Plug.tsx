@@ -29,12 +29,12 @@ const SVGComponent = () => (
         width={84.3585}
         height={172.956}
         transform='rotate(132.927 156.096 122.295)'
-        fill='url(#pattern0)'
+        fill='url(#pattern6)'
       />
     </g>
     <defs>
       <pattern
-        id='pattern0'
+        id='pattern6'
         patternContentUnits='objectBoundingBox'
         width={1}
         height={1}

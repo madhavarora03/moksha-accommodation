@@ -1,5 +1,7 @@
 'use client';
 
+import { calcAmount } from '@/lib/amountUtility';
+import Link from 'next/link';
 import { useState } from 'react';
 import FormWrapper from './FormWrapper';
 import { useToast } from './ui/use-toast';
@@ -58,22 +60,22 @@ export default function RegisterForm() {
         />
       </svg>
       <div className='md:flex w-full'>
-        <div className='md:w-1/2 w-full'>
-          <span className='font-upheavtt md:text-4xl text-4xl text-black relative h-fit'>
+        <div className='md:w-1/2 w-full px-2 md:px-6'>
+          <span className='font-upheavtt text-4xl text-black tracking-wider relative h-fit text-center md:text-left w-full block'>
             Check In
-            <span className='absolute w-full h-fit -left-1 -bottom-[2px] md:bottom-0 text-[#9E46A8]'>
+            <span className='absolute w-full h-fit -left-[2.5px] bottom-[2px] text-[#9E46A8]'>
               Check In
             </span>
           </span>
-          <div className='flex gap-2'>
+          <div className='flex md:gap-3 justify-around md:justify-start font-upheavtt md:text-xl text-2xl'>
             {[4, 5, 6, 7].map((day) => (
               <button
                 key={`checkin-${day}`}
                 onClick={() => handleCheckIn(day)}
-                className={`btn-sm border rounded-md py-2 px-4 focus:outline-none  ${
+                className={`btn-sm py-2 px-4 focus:outline-none  ${
                   checkIn === day
-                    ? 'bg-[#ffe719] border-black font-extrabold text-black'
-                    : 'bg-white border-black hover:bg-[#ffe719] text-black'
+                    ? 'bg-[url("/btn-bg.svg")] bg-cover font-semibold text-black'
+                    : 'bg-white hover:bg-[#FFED00] rounded-2xl text-black border border-black'
                 }`}
               >
                 {day}
@@ -82,21 +84,21 @@ export default function RegisterForm() {
           </div>
         </div>
         <div className='md:w-1/2 w-full'>
-          <span className='font-upheavtt md:text-5xl text-4xl text-black relative h-fit'>
+          <span className='font-upheavtt text-4xl text-black tracking-wider relative h-fit text-center md:text-left w-full block'>
             Check Out
-            <span className='absolute w-full h-fit -left-1 -bottom-[2px] md:bottom-0 text-[#9E46A8]'>
+            <span className='absolute w-full h-fit -left-[2.5px] bottom-[2px] text-[#9E46A8]'>
               Check Out
             </span>
           </span>
-          <div className='flex gap-2'>
+          <div className='flex md:gap-3 justify-around md:justify-start font-upheavtt md:text-xl text-2xl'>
             {[10, 11].map((day) => (
               <button
                 key={`checkout-${day}`}
                 onClick={() => handleCheckOut(day)}
-                className={`btn-sm border rounded-md py-2 px-4 focus:outline-none  ${
+                className={`btn-sm py-2 ${day === 11 ? 'px-[18px]' : 'px-3.5'} focus:outline-none  ${
                   checkOut === day
-                    ? 'bg-[#ffe719] border-black font-extrabold text-black'
-                    : 'bg-white border-black hover:bg-[#ffe719] text-black'
+                    ? 'bg-[url("/btn-bg.svg")] bg-cover font-semibold text-black'
+                    : 'bg-white hover:bg-[#FFED00] rounded-2xl text-black border border-black'
                 }`}
               >
                 {day}
@@ -105,7 +107,7 @@ export default function RegisterForm() {
           </div>
         </div>
       </div>
-      <div>
+      <div className='z-[10]'>
         <div className='font-upheavtt md:text-5xl text-4xl text-black relative h-fit'>
           No of People
           <span className='absolute w-full h-fit -left-1 bottom-[2px] text-[#9E46A8]'>
@@ -113,7 +115,18 @@ export default function RegisterForm() {
           </span>
         </div>
         <div className='flex justify-center items-center gap-2'>
-          <button>
+          <button
+            onClick={() => {
+              if (personCount > 1) setPersonCount(personCount - 1);
+              if (personCount === 1) {
+                toast({
+                  title: 'Minimum 1 person is required',
+                  variant: 'destructive',
+                  className: '',
+                });
+              }
+            }}
+          >
             <svg
               width={41}
               height={42}
@@ -122,12 +135,12 @@ export default function RegisterForm() {
               xmlns='http://www.w3.org/2000/svg'
               xmlnsXlink='http://www.w3.org/1999/xlink'
             >
-              <rect y={1} width={41} height={41} fill='url(#pattern0)' />
+              <rect y={1} width={41} height={41} fill='url(#pattern3)' />
               <path d='M8 25.3879V21.0818H31.6833V25.3879H8Z' fill='#150A27' />
               <path d='M7 24.3879V20.0818H30.6833V24.3879H7Z' fill='#9E46A8' />
               <defs>
                 <pattern
-                  id='pattern0'
+                  id='pattern3'
                   patternContentUnits='objectBoundingBox'
                   width={1}
                   height={1}
@@ -146,10 +159,10 @@ export default function RegisterForm() {
               </defs>
             </svg>
           </button>
-          <span className='bg-[#FFF3C9] text-black md:px-12 px-8 font-upheavtt text-4xl py-2 rounded-lg border border-[#4D493D] shadow-[1px_1px_0_0_#9E46A8]'>
+          <span className='bg-[#FFF3C9] text-black md:px-12 px-10 font-upheavtt text-4xl py-1 md:py-2 rounded-lg border border-[#4D493D] shadow-[1px_1px_0_0_#9E46A8]'>
             {personCount}
           </span>
-          <button>
+          <button onClick={() => setPersonCount(personCount + 1)}>
             <svg
               width={41}
               height={42}
@@ -158,7 +171,7 @@ export default function RegisterForm() {
               xmlns='http://www.w3.org/2000/svg'
               xmlnsXlink='http://www.w3.org/1999/xlink'
             >
-              <rect y={1} width={41} height={41} fill='url(#pattern0)' />
+              <rect y={1} width={41} height={41} fill='url(#pattern4)' />
               <path
                 d='M23.0712 25.3879V29.6939H16.6121V25.3879H8V21.0818H16.6121V16.7758H23.0712V21.0818H31.6833V25.3879H23.0712Z'
                 fill='#150A27'
@@ -169,7 +182,7 @@ export default function RegisterForm() {
               />
               <defs>
                 <pattern
-                  id='pattern0'
+                  id='pattern4'
                   patternContentUnits='objectBoundingBox'
                   width={1}
                   height={1}
@@ -190,6 +203,63 @@ export default function RegisterForm() {
           </button>
         </div>
       </div>
+      <div>
+        <h1 className='text-black font-upheavtt md:text-6xl text-4xl z-[10]'>
+          <span>
+            Total :{' '}
+            <span className=''>
+              {calcAmount(checkIn, checkOut, personCount)}
+            </span>
+          </span>
+        </h1>
+      </div>
+      <Link
+        href={``}
+        className='md:scale-150 cursor-pointer z-[10] md:pb-6 pb-1'
+      >
+        <svg
+          width={192}
+          height={51}
+          viewBox='0 0 192 51'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          xmlnsXlink='http://www.w3.org/1999/xlink'
+        >
+          <rect
+            y={0.647217}
+            width={192}
+            height={49.7056}
+            fill='url(#pattern7)'
+          />
+          <path
+            d='M20.8129 28.4093V35.8224H13.3998V17.2896H20.8129H26.3727H31.9326V19.1429H33.7859V26.556H31.9326V28.4093H20.8129ZM20.8129 20.9961V24.7027H26.3727V20.9961H20.8129ZM44.8911 28.4093V35.8224H37.4779V17.2896H44.8911H50.4509H56.0107V19.1429H57.864V24.7027H56.0107V28.4093H57.864V35.8224H50.4509V28.4093H44.8911ZM44.8911 20.9961V24.7027H50.4509V20.9961H44.8911ZM80.0889 33.9691V35.8224H63.4094V33.9691H61.5561V19.1429H63.4094V17.2896H80.0889V19.1429H81.9422V33.9691H80.0889ZM74.5291 28.4093V24.7027V20.9961H68.9692V32.1158H74.5291V28.4093ZM104.167 33.9691V35.8224H87.4875V33.9691H85.6343V19.1429H87.4875V17.2896H93.0474H104.167V19.1429H106.02V24.7027H98.6072V20.9961H93.0474V32.1158H98.6072V28.4093H104.167H106.02V33.9691H104.167ZM111.566 35.8224V33.9691H109.712V19.1429H111.566V17.2896H130.099V20.9961H117.126V24.7027H122.685V28.4093H117.126V32.1158H130.099V35.8224H111.566ZM135.644 35.8224V33.9691H133.791V19.1429H135.644V17.2896H154.177V20.9961H141.204V24.7027H146.764V28.4093H141.204V32.1158H154.177V35.8224H135.644ZM174.548 33.9691V35.8224H157.869V17.2896H168.988H170.842H174.548V19.1429H176.402V20.9961H178.255V32.1158H176.402V33.9691H174.548ZM168.988 22.8494V20.9961H165.282V32.1158H168.988V30.2625H170.842V22.8494H168.988Z'
+            fill='#150A27'
+          />
+          <path
+            d='M19.9521 27.5485V34.9617H12.5389V16.4289H19.9521H25.5119H31.0717V18.2821H32.925V25.6953H31.0717V27.5485H19.9521ZM19.9521 20.1354V23.842H25.5119V20.1354H19.9521ZM44.0302 27.5485V34.9617H36.6171V16.4289H44.0302H49.5901H55.1499V18.2821H57.0032V23.842H55.1499V27.5485H57.0032V34.9617H49.5901V27.5485H44.0302ZM44.0302 20.1354V23.842H49.5901V20.1354H44.0302ZM79.2281 33.1084V34.9617H62.5485V33.1084H60.6953V18.2821H62.5485V16.4289H79.2281V18.2821H81.0813V33.1084H79.2281ZM73.6682 27.5485V23.842V20.1354H68.1084V31.2551H73.6682V27.5485ZM103.306 33.1084V34.9617H86.6267V33.1084H84.7734V18.2821H86.6267V16.4289H92.1866H103.306V18.2821H105.16V23.842H97.7464V20.1354H92.1866V31.2551H97.7464V27.5485H103.306H105.16V33.1084H103.306ZM110.705 34.9617V33.1084H108.852V18.2821H110.705V16.4289H129.238V20.1354H116.265V23.842H121.825V27.5485H116.265V31.2551H129.238V34.9617H110.705ZM134.783 34.9617V33.1084H132.93V18.2821H134.783V16.4289H153.316V20.1354H140.343V23.842H145.903V27.5485H140.343V31.2551H153.316V34.9617H134.783ZM173.687 33.1084V34.9617H157.008V16.4289H168.128H169.981H173.687V18.2821H175.541V20.1354H177.394V31.2551H175.541V33.1084H173.687ZM168.128 21.9887V20.1354H164.421V31.2551H168.128V29.4018H169.981V21.9887H168.128Z'
+            fill='#9E46A8'
+          />
+          <defs>
+            <pattern
+              id='pattern7'
+              patternContentUnits='objectBoundingBox'
+              width={1}
+              height={1}
+            >
+              <use
+                xlinkHref='#image0_20_166'
+                transform='matrix(0.00862944 0 0 0.0333333 -0.000507593 0)'
+              />
+            </pattern>
+            <image
+              id='image0_20_166'
+              width={116}
+              height={30}
+              xlinkHref='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAAAeCAYAAAD99TobAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHnSURBVHgB7dvBShtBGAfw/zcJ2rVQ1pZSeihsT4UW2vRSaC8a+gQ996CCDxCvXrI+gJg3cMUH8BHUk8esoAcFZUAhKIiLIMbo7DozMaJB7zvD94MJ30x2T3925jvsEoYUp5iGwBQINT0NwcoktaOHBfoI+dwFNCiKDiKMYE2XNTAXxPQOC8OLNtD7MNd1GYG5Q3xq0fjR3JMl+8thuik/auxcrK6jvRUNloQ9MzlMZ33LFyf/v/3wEKqwDRBzl0ox+2Y3QmV02UypOMM5uJt121gLn+VfyG63bs5QDtN1RYZaMKb3W2oIMC+EoqL3W5rgQP0ScqCe4UA9w4F6hgP1DAfqGQ7UMxyoZzhQz3CgnuFAPcOBesYEmoG5jUJkubKlQIFNMLdVJyB717Y0gbbA3CUiyOIr0u6VmWWC3mMDpAdz0+tlrJyf9esC2/2miDCjhwRzS9DUof1BfNLpz0klNlAa1+uEOipfUrDy000QgiXI6jzqh/uDVYnvvxIavra4jGPksmneJjPvqrAS0eelaYAQNJBkCnOdY2TKdrcSqlfHz9+Snrtv8mAvjkZGm7VXAcJKFawcMnULedNDos/M+yD1Q0cp8ut/JkwzpRfvbrcjCBWDyHzr8gOsTMzWuQ2oxGyzj/+4A8DchnN1rDNjAAAAAElFTkSuQmCC'
+            />
+          </defs>
+        </svg>
+      </Link>
       <span className='flex flex-row-reverse w-full text-black md:pr-2 pr-1 md:text-sm text-xs'>
         *Limited Availability
       </span>

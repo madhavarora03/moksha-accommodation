@@ -57,7 +57,7 @@ export default function Header() {
       className={`flex mx-auto items-center justify-between bg-fade-pink py-1 md:py-0 px-5 md:px-7 mt-8 md:mt-24 sticky top-0 z-50 transition-all ease-in duration-200 outline outline-2 ${
         isSticky
           ? 'w-full rounded-none outline-offset-0'
-          : 'rounded-full md:w-4/6 w-11/12 outline-offset-2'
+          : 'rounded-full md:w-[72.5%] w-11/12 outline-offset-2'
       }`}
     >
       <Link href='/'>
