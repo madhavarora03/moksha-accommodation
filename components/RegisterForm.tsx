@@ -59,15 +59,15 @@ export default function RegisterForm() {
           fill='#FFED00'
         />
       </svg>
-      <div className='md:flex w-full'>
-        <div className='md:w-1/2 w-full px-2 md:px-6'>
-          <span className='font-upheavtt text-4xl text-black tracking-wider relative h-fit text-center md:text-left w-full block'>
+      <div className='md:flex w-full md:justify-around'>
+        <div className='md:w-2/5 w-full px-2 md:px-6'>
+          <span className='font-upheavtt text-4xl text-black tracking-wider relative h-fit text-center md:text-left w-full block mb-2'>
             Check In
             <span className='absolute w-full h-fit -left-[2.5px] bottom-[2px] text-[#9E46A8]'>
               Check In
             </span>
           </span>
-          <div className='flex md:gap-3 justify-around md:justify-start font-upheavtt md:text-xl text-2xl'>
+          <div className='flex md:gap-3 justify-around md:justify-start font-upheavtt md:text-xl text-2xl md:mb-0 mb-4'>
             {[4, 5, 6, 7].map((day) => (
               <button
                 key={`checkin-${day}`}
@@ -83,8 +83,8 @@ export default function RegisterForm() {
             ))}
           </div>
         </div>
-        <div className='md:w-1/2 w-full'>
-          <span className='font-upheavtt text-4xl text-black tracking-wider relative h-fit text-center md:text-left w-full block'>
+        <div className='md:w-2/5 w-full'>
+          <span className='font-upheavtt text-4xl text-black tracking-wider relative h-fit text-center md:text-left w-full block mb-2'>
             Check Out
             <span className='absolute w-full h-fit -left-[2.5px] bottom-[2px] text-[#9E46A8]'>
               Check Out
@@ -95,7 +95,7 @@ export default function RegisterForm() {
               <button
                 key={`checkout-${day}`}
                 onClick={() => handleCheckOut(day)}
-                className={`btn-sm py-2 ${day === 11 ? 'px-[18px]' : 'px-3.5'} focus:outline-none  ${
+                className={`btn-sm py-2 ${day === 11 ? 'px-[17px] tracking-wide' : 'px-3.5'} focus:outline-none  ${
                   checkOut === day
                     ? 'bg-[url("/btn-bg.svg")] bg-cover font-semibold text-black'
                     : 'bg-white hover:bg-[#FFED00] rounded-2xl text-black border border-black'
@@ -108,7 +108,7 @@ export default function RegisterForm() {
         </div>
       </div>
       <div className='z-[10]'>
-        <div className='font-upheavtt md:text-5xl text-4xl text-black relative h-fit'>
+        <div className='font-upheavtt md:text-5xl text-4xl text-black relative h-fit md:mb-6 mb-4'>
           No of People
           <span className='absolute w-full h-fit -left-1 bottom-[2px] text-[#9E46A8]'>
             No of People
@@ -126,6 +126,7 @@ export default function RegisterForm() {
                 });
               }
             }}
+            className='focus:outline-none hover:scale-105 transition-all duration-150'
           >
             <svg
               width={41}
@@ -162,7 +163,10 @@ export default function RegisterForm() {
           <span className='bg-[#FFF3C9] text-black md:px-12 px-10 font-upheavtt text-4xl py-1 md:py-2 rounded-lg border border-[#4D493D] shadow-[1px_1px_0_0_#9E46A8]'>
             {personCount}
           </span>
-          <button onClick={() => setPersonCount(personCount + 1)}>
+          <button
+            onClick={() => setPersonCount(personCount + 1)}
+            className='focus:outline-none hover:scale-105 transition-all duration-150'
+          >
             <svg
               width={41}
               height={42}
@@ -214,7 +218,7 @@ export default function RegisterForm() {
         </h1>
       </div>
       <Link
-        href={``}
+        href={`/details?checkIn=${checkIn}&checkOut=${checkOut}&personCount=${personCount}`}
         className='md:scale-150 cursor-pointer z-[10] md:pb-6 pb-1'
       >
         <svg
@@ -260,9 +264,9 @@ export default function RegisterForm() {
           </defs>
         </svg>
       </Link>
-      <span className='flex flex-row-reverse w-full text-black md:pr-2 pr-1 md:text-sm text-xs'>
+      <p className='flex flex-row-reverse w-full text-black md:pr-2 pr-1 md:text-sm text-xs'>
         *Limited Availability
-      </span>
+      </p>
     </FormWrapper>
   );
 }
