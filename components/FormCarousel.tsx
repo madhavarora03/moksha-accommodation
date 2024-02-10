@@ -234,6 +234,52 @@ export default function FormCarousel({ session }: { session: Session }) {
         <div className='max-w-full dark text-white'>
           <Carousel>
             <CarouselContent>
+              <CarouselItem className='flex items-center justify-center flex-col space-y-2'>
+                <Input type='hidden' name='amount' value={amount} />
+                <Label className='relative tracking-widest text-[#00D2CD] text-2xl md:text-5xl text-center'>
+                  Current Amount: {amount / 100}
+                  <span className='absolute tracking-widest md:-top-[6px] -top-[3px] md:-left-[4px] -left-[2px] w-full text-[#FFFFFF]'>
+                    Current Amount: {amount / 100}
+                  </span>
+                  {/* <span className='absolute tracking-widest md:-top-[10px] -top-[5px] md:-left-[6px] -left-[3px] w-full text-[#FFED00]'>
+                    Current Amount: {amount / 100}
+                  </span> */}
+                </Label>
+                <Label className='relative tracking-wider text-[#FFFFFF] text-2xl md:text-5xl text-center'>
+                  <span className='absolute tracking-wider md:-top-[2px] -top-[1px] md:-left-[2px] -left-[1px] w-full text-[#FFED00]'>
+                    Do you Have a Code?
+                  </span>
+                  Do you Have a Code?
+                </Label>
+                <div className='flex w-full max-w-sm items-center space-x-2'>
+                  <Input
+                    type='text'
+                    placeholder='Enter Code Here..'
+                    className='font-bold'
+                    ref={promoRef}
+                  />
+                  <Input
+                    type='hidden'
+                    ref={actualRef}
+                    name='promocode'
+                    disabled
+                    value={promoCode}
+                  />
+                  <button
+                    type='button'
+                    disabled={promo}
+                    onClick={handlePromoChange}
+                    // onClick={handleButtonSubmit}
+                    // className='md:text-2xl text-xl leading-2 font-bold mt-2 font-upheavtt bg-[#FFED00] md:px-6 px-2 rounded-2xl text-[#000000] relative md:tracking-wider tracking-wide shadow-[2px_2px_0_0_#FFF,4px_4px_0_0_#00D2CD] block py-1 md:py-6 mb-6 md:mb-3'
+                    className='bg-[#FFED00] relative  px-3 font-extrabold font-upheavtt tracking-wider rounded-2xl text-xl shadow-[2px_2px_0_0_#FFF,4px_4px_0_0_#00D2CD] disabled:bg-[#FFFFFF]'
+                  >
+                    Validate
+                    <span className='absolute font-extrabold text-[#9E46A8] top-1/2 -translate-y-[51%] left-1/2 -translate-x-[51%]'>
+                      Validate
+                    </span>
+                  </button>
+                </div>
+              </CarouselItem>
               <CarouselItem>
                 <div className='w-full h-full flex gap-12 justify-center items-center flex-col tracking-widest'>
                   <Label
@@ -388,52 +434,7 @@ export default function FormCarousel({ session }: { session: Session }) {
                   </CarouselItem>
                 );
               })}
-              <CarouselItem className='flex items-center justify-center flex-col space-y-2'>
-                <Input type='hidden' name='amount' value={amount} />
-                <Label className='relative tracking-widest text-[#00D2CD] text-2xl md:text-5xl text-center'>
-                  Current Amount: {amount / 100}
-                  <span className='absolute tracking-widest md:-top-[6px] -top-[3px] md:-left-[4px] -left-[2px] w-full text-[#FFFFFF]'>
-                    Current Amount: {amount / 100}
-                  </span>
-                  {/* <span className='absolute tracking-widest md:-top-[10px] -top-[5px] md:-left-[6px] -left-[3px] w-full text-[#FFED00]'>
-                    Current Amount: {amount / 100}
-                  </span> */}
-                </Label>
-                <Label className='relative tracking-wider text-[#FFFFFF] text-2xl md:text-5xl text-center'>
-                  <span className='absolute tracking-wider md:-top-[2px] -top-[1px] md:-left-[2px] -left-[1px] w-full text-[#FFED00]'>
-                    Do you Have a Code?
-                  </span>
-                  Do you Have a Code?
-                </Label>
-                <div className='flex w-full max-w-sm items-center space-x-2'>
-                  <Input
-                    type='text'
-                    placeholder='Enter Code Here..'
-                    className='font-bold'
-                    ref={promoRef}
-                  />
-                  <Input
-                    type='hidden'
-                    ref={actualRef}
-                    name='promocode'
-                    disabled
-                    value={promoCode}
-                  />
-                  <button
-                    type='button'
-                    disabled={promo}
-                    onClick={handlePromoChange}
-                    // onClick={handleButtonSubmit}
-                    // className='md:text-2xl text-xl leading-2 font-bold mt-2 font-upheavtt bg-[#FFED00] md:px-6 px-2 rounded-2xl text-[#000000] relative md:tracking-wider tracking-wide shadow-[2px_2px_0_0_#FFF,4px_4px_0_0_#00D2CD] block py-1 md:py-6 mb-6 md:mb-3'
-                    className='bg-[#FFED00] relative  px-3 font-extrabold font-upheavtt tracking-wider rounded-2xl text-xl shadow-[2px_2px_0_0_#FFF,4px_4px_0_0_#00D2CD] disabled:bg-[#FFFFFF]'
-                  >
-                    Validate
-                    <span className='absolute font-extrabold text-[#9E46A8] top-1/2 -translate-y-[51%] left-1/2 -translate-x-[51%]'>
-                      Validate
-                    </span>
-                  </button>
-                </div>
-              </CarouselItem>
+
               <CarouselItem>
                 <div className='p-4 md:p-10 flex items-center justify-center flex-col w-full h-full'>
                   <Label className='text-xl'>
