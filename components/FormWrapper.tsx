@@ -1,6 +1,7 @@
 import Camera from './svg/Camera';
 import Cluster from './svg/Cluster';
 import Plug from './svg/Plug';
+import Wave from './svg/Wave';
 
 export default function FormWrapper({
   children,
@@ -15,7 +16,7 @@ export default function FormWrapper({
         <Camera />
         <Plug />
         <Cluster />
-        {/* <Wave /> */}
+        <Wave />
         <main className={className}>{children}</main>
       </div>
       <div className='flex flex-row-reverse md:mt-4 mt-2 gap-4 md:scale-100 scale-50 md:w-4/6 mx-auto w-[110%]'>

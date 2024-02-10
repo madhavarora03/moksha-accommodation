@@ -54,7 +54,7 @@ export default function Header() {
 
   return (
     <nav
-      className={`flex mx-auto items-center justify-between bg-[#AA13AD] py-1 md:py-0 px-5 md:px-7 mt-8 md:mt-24 sticky top-0 z-50 transition-all ease-in duration-200 outline outline-2 ${
+      className={`flex mx-auto items-center justify-between bg-[#AA13AD] py-1 md:py-0 px-5 md:px-7 mt-8 md:mt-24 sticky top-0 z-50 transition-all ease-in duration-200 outline outline-white outline-2 ${
         isSticky
           ? 'w-full rounded-none outline-offset-0'
           : 'rounded-full md:w-[62.5%] w-11/12 outline-offset-2'

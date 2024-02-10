@@ -83,7 +83,7 @@ export default function RegisterForm() {
               <button
                 key={`checkin-${day}`}
                 onClick={() => handleCheckIn(day)}
-                className={`relative block tracking-widest md:w-[35px] md:h-[35px] w-[32px] h-[32px] ${checkIn === day ? 'bg-[url("/btn-bg.svg")] bg-cover text-black' : 'bg-[#FFED00] text-black rounded-lg md:rounded-xl hover:bg-white'}`}
+                className={`relative block tracking-widest md:w-[35px] md:h-[35px] w-[32px] h-[32px] ${checkIn === day ? 'bg-[url("/btn-bg.svg")] bg-cover text-black' : 'hover:bg-[#FFED00] text-black rounded-lg md:rounded-xl shadow-[1px_1px_2px_0_#a0eeed,2px_2px_4px_0_#00d2cd] bg-white'}`}
               >
                 {day}
                 <span className='absolute -top-[0.75px] left-[6.5px] text-[#9E46A8]'>
@@ -116,7 +116,7 @@ export default function RegisterForm() {
               <button
                 key={`checkout-${day}`}
                 onClick={() => handleCheckOut(day)}
-                className={`tracking-widest relative block md:w-[35px] md:h-[35px] w-[32px] h-[32px] ${checkOut === day ? 'bg-[url("/btn-bg.svg")] bg-cover text-black' : 'bg-[#FFED00] text-black rounded-lg md:rounded-xl hover:bg-white'}`}
+                className={`tracking-widest relative block md:w-[35px] md:h-[35px] w-[32px] h-[32px] ${checkOut === day ? 'bg-[url("/btn-bg.svg")] bg-cover text-black rounded-xl' : 'hover:bg-[#FFED00] text-black rounded-lg md:rounded-xl shadow-[1px_1px_2px_0_#a0eeed,2px_2px_4px_0_#00d2cd] bg-white'}`}
               >
                 {day}
                 <span

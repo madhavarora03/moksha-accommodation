@@ -51,7 +51,7 @@ const RenderRazorpay = ({
       currency: 'INR',
       name: 'Moksha',
       description: 'Test Transaction',
-      image: 'https://mokshainnovision.s3.eu-north-1.amazonaws.com/ww_MV.png',
+      image: '/logomark.JPG',
       order_id: orderId,
       handler: function (response: any) {
         const hashtext = hash(`${orderId}|${response.razorpay_payment_id}`);

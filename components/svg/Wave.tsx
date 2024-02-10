@@ -1,30 +1,30 @@
 const SVGComponent = () => (
   <svg
-    className='absolute -bottom-32 -right-36 -z-[1]'
-    width={604}
-    height={446}
-    viewBox='0 0 604 446'
+    className='absolute md:-bottom-6 md:-right-[4.5rem] -z-[1] md:w-16 h-auto w-12 -right-14 -bottom-4'
+    width={76}
+    height={270}
+    viewBox='0 0 76 270'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     xmlnsXlink='http://www.w3.org/1999/xlink'
   >
     <rect
-      y={612}
-      width={612}
-      height={604}
-      transform='rotate(-90 0 612)'
-      fill='url(#pattern8)'
+      y={270}
+      width={270}
+      height={76}
+      transform='rotate(-90 0 270)'
+      fill='url(#pattern9)'
     />
     <defs>
       <pattern
-        id='pattern8'
+        id='pattern9'
         patternContentUnits='objectBoundingBox'
         width={1}
         height={1}
       >
         <use
           xlinkHref='#image0_14_95'
-          transform='matrix(0.0005 0 0 0.000506623 0 -0.00662252)'
+          transform='matrix(0.00113333 0 0 0.00402632 -0.996296 -6.10526)'
         />
       </pattern>
       <image

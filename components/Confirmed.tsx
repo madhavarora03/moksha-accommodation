@@ -15,7 +15,7 @@ import Image from 'next/image';
 export default function Confirmed({ user }: { user: UserData }) {
   return (
     <Dialog>
-      <DialogTrigger className='hover:underline'>
+      <DialogTrigger className='underline'>
         Confirmed
         <DoneAllRoundedIcon className='text-green-500 ml-2' />
       </DialogTrigger>

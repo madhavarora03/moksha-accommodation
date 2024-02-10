@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Provider from '@/components/Provider';
+import SideBar from '@/components/SideBar';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import localFont from 'next/font/local';
@@ -43,7 +44,7 @@ export default function RootLayout({
         <NextTopLoader color='#ff0000' />
         <Provider>
           <Header />
-          {/* <SideBar /> */}
+          <SideBar />
           {children}
         </Provider>
       </body>

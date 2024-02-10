@@ -8,7 +8,7 @@ export default function SignOut() {
   });
   return (
     <div className='flex justify-center items-center h-[60dvh]'>
-      <p className='md:text-6xl text-4xl text-center font-upheavtt '>
+      <p className='md:text-6xl text-4xl text-center font-upheavtt text-white'>
         Signing <span className='text-[#FFED00]'>Out...</span>
       </p>
     </div>
