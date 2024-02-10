@@ -44,7 +44,7 @@ export default function RootLayout({
         <NextTopLoader color='#ff0000' />
         <Provider>
           <Header />
-          <SideBar />
+          {/* <SideBar /> */}
           {children}
         </Provider>
       </body>
