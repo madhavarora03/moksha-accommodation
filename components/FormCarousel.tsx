@@ -184,22 +184,38 @@ export default function FormCarousel({ session }: { session: Session }) {
       setPromo(true);
       const promoValue = promoRef.current?.value;
       if (!promoValue) throw new Error('Promo Code must be entered');
-      const data = await fetch('/api/fetchcode', {
-        body: JSON.stringify(promoValue),
+      const data = await fetch('https://moksha-9bmv.onrender.com/findCL', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: leaderMail }),
         method: 'POST',
       });
       const jsonData = await data.json();
-      if (!jsonData.success) {
+      console.log(jsonData, promoValue);
+      if (jsonData.message === '0') {
         toast({
-          title: 'The Promo code you entered was not found',
+          title: 'You must login as a Contingent Leader!',
           variant: 'destructive',
         });
         promoRef.current.value = '';
         setPromoCode('');
+        setPromo(false);
       } else {
-        setPromoCode(jsonData.success);
-        promoRef.current.disabled = true;
-        setAmount((old) => (95 * old) / 100);
+        if (jsonData.message === promoValue) {
+          setPromoCode(promoValue);
+          toast({
+            title: 'Promo Code Applied Successfully!',
+          });
+          setPromoCode(jsonData.success);
+          promoRef.current.disabled = true;
+          setAmount((old) => (95 * old) / 100);
+        } else {
+          toast({
+            title: 'Invalid Promo Code!',
+            variant: 'destructive',
+          });
+        }
       }
     } catch (e: any) {
       alert(e);
