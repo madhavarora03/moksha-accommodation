@@ -5,6 +5,7 @@ import { calcAmount } from '@/lib/amountUtility';
 import { Session } from 'next-auth';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useRef, useState } from 'react';
+import Spinner from './Spinner';
 import {
   Carousel,
   CarouselContent,
@@ -33,6 +34,12 @@ export default function FormCarousel({ session }: { session: Session }) {
   const leaderMail = session.user?.email as string;
   const searchParams = useSearchParams();
   const { toast } = useToast();
+
+  const [promo, setPromo] = useState<boolean>(false);
+  const [promoCode, setPromoCode] = useState<string>('');
+  const promoRef = useRef<HTMLInputElement>(null);
+  const actualRef = useRef<HTMLInputElement>(null);
+  const [loading, setLoading] = useState(false);
 
   const params = {
     checkIn: Number(searchParams.get('checkIn')),
@@ -175,15 +182,15 @@ export default function FormCarousel({ session }: { session: Session }) {
     }
   };
 
-  const [promo, setPromo] = useState<boolean>(false);
-  const [promoCode, setPromoCode] = useState<string>('');
-  const promoRef = useRef<HTMLInputElement>(null);
-  const actualRef = useRef<HTMLInputElement>(null);
   const handlePromoChange = async () => {
     try {
       setPromo(true);
       const promoValue = promoRef.current?.value;
-      if (!promoValue) throw new Error('Promo Code must be entered');
+      if (!promoValue) {
+        setPromo(false);
+        throw new Error('Promo Code must be entered');
+      }
+      setLoading(true);
       const data = await fetch('https://moksha-9bmv.onrender.com/findCL', {
         headers: {
           'Content-Type': 'application/json',
@@ -193,6 +200,7 @@ export default function FormCarousel({ session }: { session: Session }) {
       });
       const jsonData = await data.json();
       console.log(jsonData, promoValue);
+      setLoading(false);
       if (jsonData.message === '0') {
         toast({
           title: 'You must login as a Contingent Leader!',
@@ -207,7 +215,6 @@ export default function FormCarousel({ session }: { session: Session }) {
           toast({
             title: 'Promo Code Applied Successfully!',
           });
-          setPromoCode(jsonData.success);
           promoRef.current.disabled = true;
           setAmount((old) => (95 * old) / 100);
         } else {
@@ -215,14 +222,12 @@ export default function FormCarousel({ session }: { session: Session }) {
             title: 'Invalid Promo Code!',
             variant: 'destructive',
           });
+          setPromo(false);
         }
       }
     } catch (e: any) {
       alert(e);
-    } finally {
-      setPromo(false);
     }
-    setPromo((old) => !old);
   };
 
   return (
@@ -257,9 +262,6 @@ export default function FormCarousel({ session }: { session: Session }) {
                   <span className='absolute tracking-widest md:-top-[6px] -top-[3px] md:-left-[4px] -left-[2px] w-full text-[#FFFFFF]'>
                     Current Amount: {amount / 100}
                   </span>
-                  {/* <span className='absolute tracking-widest md:-top-[10px] -top-[5px] md:-left-[6px] -left-[3px] w-full text-[#FFED00]'>
-                    Current Amount: {amount / 100}
-                  </span> */}
                 </Label>
                 <Label className='relative tracking-wider text-[#FFFFFF] text-2xl md:text-5xl text-center'>
                   <span className='absolute tracking-wider md:-top-[2px] -top-[1px] md:-left-[2px] -left-[1px] w-full text-[#FFED00]'>
@@ -278,22 +280,24 @@ export default function FormCarousel({ session }: { session: Session }) {
                     type='hidden'
                     ref={actualRef}
                     name='promocode'
-                    disabled
+                    // disabled
                     value={promoCode}
                   />
-                  <button
-                    type='button'
-                    disabled={promo}
-                    onClick={handlePromoChange}
-                    // onClick={handleButtonSubmit}
-                    // className='md:text-2xl text-xl leading-2 font-bold mt-2 font-upheavtt bg-[#FFED00] md:px-6 px-2 rounded-2xl text-[#000000] relative md:tracking-wider tracking-wide shadow-[2px_2px_0_0_#FFF,4px_4px_0_0_#00D2CD] block py-1 md:py-6 mb-6 md:mb-3'
-                    className='bg-[#FFED00] relative  px-3 font-extrabold font-upheavtt tracking-wider rounded-2xl text-xl shadow-[2px_2px_0_0_#FFF,4px_4px_0_0_#00D2CD] disabled:bg-[#FFFFFF]'
-                  >
-                    Validate
-                    <span className='absolute font-extrabold text-[#9E46A8] top-1/2 -translate-y-[51%] left-1/2 -translate-x-[51%]'>
+                  {loading ? (
+                    <Spinner />
+                  ) : (
+                    <button
+                      type='button'
+                      disabled={promo}
+                      onClick={handlePromoChange}
+                      className='bg-[#FFED00] relative  px-3 font-extrabold font-upheavtt tracking-wider rounded-2xl text-xl shadow-[2px_2px_0_0_#FFF,4px_4px_0_0_#00D2CD] disabled:bg-[#FFFFFF]'
+                    >
                       Validate
-                    </span>
-                  </button>
+                      <span className='absolute font-extrabold text-[#9E46A8] top-1/2 -translate-y-[51%] left-1/2 -translate-x-[51%]'>
+                        Validate
+                      </span>
+                    </button>
+                  )}
                 </div>
               </CarouselItem>
               <CarouselItem>

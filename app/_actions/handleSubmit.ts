@@ -33,10 +33,15 @@ export default async function handleSubmit(
       razorpay_order_id: formdata.get('razorpay-order-id') as string,
       razorpay_signature: formdata.get('razorpay-signature') as string,
       amount: formdata.get('amount')?.slice(0, -2) as string,
+      contingent_id: formdata.get('promocode') || '-',
+      contingent_email: !(formdata.get('promocode') as string)
+        ? '-'
+        : query.leader_mail,
     });
   }
 
   try {
+    console.log(formdata);
     await fetch(
       `https://script.google.com/macros/s/${process.env.GOOGLE_APP_SCRIPT_DEPLOYMENT_ID}/exec?action=addTeam`,
       {
