@@ -83,7 +83,8 @@ export default function FormCarousel({ session }: { session: Session }) {
   const router = useRouter();
   if (
     params.checkIn < 4 ||
-    params.checkOut != 10 ||
+    params.checkOut < 10 ||
+    params.checkOut > 11 ||
     params.personCount < 1 ||
     params.checkIn > 7 ||
     params.checkIn > params.checkOut
