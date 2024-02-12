@@ -212,12 +212,21 @@ export default function FormCarousel({ session }: { session: Session }) {
         setPromo(false);
       } else {
         if (jsonData.message === promoValue) {
+          if (params.personCount < 8) {
+            toast({
+              title: 'Promo Code is only applicable for 8 or more members!',
+              variant: 'destructive',
+            });
+            promoRef.current.value = '';
+            setPromo(false);
+            return;
+          }
           setPromoCode(promoValue);
           toast({
             title: 'Promo Code Applied Successfully!',
           });
           promoRef.current.disabled = true;
-          setAmount((old) => (95 * old) / 100);
+          setAmount((old) => (90 * old) / 100);
         } else {
           toast({
             title: 'Invalid Promo Code!',
