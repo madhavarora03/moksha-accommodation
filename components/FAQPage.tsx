@@ -18,6 +18,11 @@ export default function FAQPage() {
         "You first need to register and make payment for accommodation to receive your Inno-Code. Afterwards, your college's CL or your group representative will receive accommodation confirmation via email by the first week of March.",
     },
     {
+      question:
+        'Does obtaining accommodation require being a part of a small group or large contingent?',
+      answer: 'No, you can register as an individual for the accommodation.',
+    },
+    {
       question: 'Where will the accommodations be provided?',
       answer:
         'Accommodation will be provided to both boys and girls in secure partner hotels of Moksha-Innovision, near the campus.',
