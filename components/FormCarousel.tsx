@@ -468,7 +468,7 @@ export default function FormCarousel({ session }: { session: Session }) {
               <CarouselItem>
                 <div className='p-4 md:p-10 flex items-center justify-center flex-col w-full h-full'>
                   <Label className='text-xl max-w-xl'>
-                    Enter Drive Link containing Aadhar Card details of all
+                    Enter Drive Link containing Aadhar Card details of all the
                     members:
                     <Input
                       type='text'
@@ -480,7 +480,7 @@ export default function FormCarousel({ session }: { session: Session }) {
                   </Label>
                   <Label className='text-xl max-w-xl'>
                     Enter Drive Link containing College ID Card details of all
-                    members:
+                    the members:
                     <Input
                       type='text'
                       name='college-id-link'
