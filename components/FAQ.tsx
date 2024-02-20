@@ -9,7 +9,7 @@ const FAQ = ({ index, question, answer, opened }: FAQsProps) => {
   return (
     <>
       <div className='text-black md:text-xl font-semibold min-h-12 md:h-16 px-2 md:px-4 py-1 md:py-2 flex justify-between items-center h-fit'>
-        <p className=''>{question}</p>
+        <p className='leading-tight tracking-tighter'>{question}</p>
         <span className='cursor-pointer'>
           <svg
             xmlns='http://www.w3.org/2000/svg'

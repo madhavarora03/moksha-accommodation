@@ -279,7 +279,7 @@ export default function FormCarousel({ session }: { session: Session }) {
                   </span>
                   Do you Have a Code?
                 </Label>
-                <div className='flex w-full max-w-sm items-center space-x-2'>
+                <div className='flex flex-col gap-4 md:gap-0 md:flex-row w-full max-w-sm items-center space-x-2'>
                   <Input
                     type='text'
                     placeholder='Enter Code Here..'
@@ -331,7 +331,7 @@ export default function FormCarousel({ session }: { session: Session }) {
                     onChange={(e) => handleTeamNameChange(e.target.value)}
                     required={true}
                     className='w-auto md:w-1/2 mx-auto md:mx-0'
-                    placeholder='Enter your team name here...'
+                    placeholder='Enter your team name'
                   />
                 </div>
               </CarouselItem>
@@ -467,8 +467,9 @@ export default function FormCarousel({ session }: { session: Session }) {
 
               <CarouselItem>
                 <div className='p-4 md:p-10 flex items-center justify-center flex-col w-full h-full'>
-                  <Label className='text-xl'>
-                    Enter Drive Link containing Aadhar Card details:
+                  <Label className='text-xl max-w-xl'>
+                    Enter Drive Link containing Aadhar Card details of all
+                    members:
                     <Input
                       type='text'
                       name='aadhar-link'
@@ -477,8 +478,9 @@ export default function FormCarousel({ session }: { session: Session }) {
                       onChange={(e) => setAadharLink(e.target.value)}
                     />
                   </Label>
-                  <Label className='text-xl'>
-                    Enter Drive Link containing College ID Card details:
+                  <Label className='text-xl max-w-xl'>
+                    Enter Drive Link containing College ID Card details of all
+                    members:
                     <Input
                       type='text'
                       name='college-id-link'
