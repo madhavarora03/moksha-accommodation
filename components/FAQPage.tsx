@@ -45,14 +45,40 @@ export default function FAQPage() {
         'No, the accommodation charges do not include food. However, Food Courts will be operational during Moksha-Innovision to cater to the food requirements.',
     },
     {
-      question: 'What do the accommodation facilities include?',
-      answer:
-        'The accommodation cost includes staying near the campus during the festival, direct entry to concerts, and many other perks.',
-    },
-    {
-      question: 'What is the procedure to be followed after we reach N.S.U.T.?',
+      question: 'What is the procedure to be followed after we reach NSUT?',
       answer:
         'You need to report to the Accommodation Desk in the Admin Block with your college ID card to receive your assigned lodging. For large groups, the contingent leader must present ID cards for all members along with a list of all the members. Accommodation would be strictly on a shared basis.',
+    },
+    {
+      question: 'What do the accommodation facilities include?',
+      answer:
+        'The accommodation cost includes staying near the campus during the festival, direct entry to concerts (passes for which shall be made available to you upon arrival), and many other perks.',
+    },
+    {
+      question:
+        'I am not traveling with my college contingent and will be arriving separately. what should I do?',
+      answer:
+        'Contact your Contingent Leader, as your registration at the accommodation desk will be handled by them.',
+    },
+    {
+      question:
+        'Is the accommodation fee refundable if I wish to opt out of accommodation at any later stage?',
+      answer:
+        'No, once the payment is processed, the accommodation fee is not refundable in any scenario.',
+    },
+    {
+      question: 'What will be the check-in and check-out timings?',
+      answer:
+        'Check-in timing will be 11 AM, and Check-out timing will be 10 AM.',
+    },
+    {
+      question: 'Which is the nearest metro station to NSUT?',
+      answer: 'Dwarka Mor, Gate no. 2 is the closest metro station to NSUT.',
+    },
+    {
+      question:
+        'What should be the cab location for the pickup from/drop at college?',
+      answer: 'NSUT Main Gate, Dwarka Sector-3, Delhi 110078 India',
     },
   ];
 
@@ -73,7 +99,7 @@ export default function FAQPage() {
         width={100}
         height={1080}
       />
-      <div className='w-3/5 flex flex-col gap-4 min-w-64 mx-3.5 md:mx-0'>
+      <div className='w-3/5 flex flex-col md:gap-6 gap-5 min-w-64 mx-3.5 md:mx-0'>
         {FAQs.map((faq, index) => {
           return (
             <div
